@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 자서전 워크북 — 여성의 삶을 노크하다</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+:root{
+  --cream:#FAF7F2;--warm-white:#FFFDF9;--ink:#2C2420;--ink-light:#6B5E58;
+  --ink-muted:#A89990;--blush:#E8C4B8;--blush-light:#F5E6E0;
+  --sage:#B8C9B0;--sage-light:#EDF2EB;--gold:#C9A96E;--gold-light:#F5EDD8;
+  --border:#E8E0D8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);font-weight:400;line-height:1.8;}
+.wrap{max-width:680px;margin:0 auto;padding:52px 24px 100px;}
+
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;margin-bottom:40px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:var(--warm-white);}
+.back-btn:hover{border-color:var(--gold);color:var(--ink);}
+
+/* 커버 */
+.cover{background:var(--ink);border-radius:20px;padding:40px 32px;margin-bottom:28px;text-align:center;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(201,169,110,.1);}
+.cover::after{content:'';position:absolute;bottom:-40px;left:-40px;width:140px;height:140px;border-radius:50%;background:rgba(184,201,176,.08);}
+.cover-org{font-size:11px;letter-spacing:.15em;color:var(--gold);font-weight:500;margin-bottom:8px;position:relative;z-index:1;}
+.cover-event{font-size:13px;color:rgba(255,255,255,.85);margin-bottom:6px;position:relative;z-index:1;}
+.cover-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:var(--warm-white);line-height:1.5;margin-bottom:6px;word-break:keep-all;position:relative;z-index:1;}
+.cover-sub{font-size:14px;color:rgba(255,255,255,.85);margin-bottom:28px;position:relative;z-index:1;}
+.name-box{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px 28px;position:relative;z-index:1;}
+.name-label{font-size:13px;color:rgba(255,255,255,.85);}
+.name-line{width:120px;border-bottom:1px solid rgba(255,255,255,.3);}
+
+/* 수업 소개 */
+.intro-box{background:var(--gold-light);border:1px solid var(--gold);border-radius:16px;padding:24px;margin-bottom:14px;}
+.intro-q{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;word-break:keep-all;}
+.intro-desc{font-size:15px;font-weight:400;color:var(--ink);line-height:1.9;word-break:keep-all;}
+
+/* 공지 */
+.notice-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:14px;}
+.notice-title{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--ink);margin-bottom:12px;}
+.notice-row{display:flex;gap:12px;font-size:15px;color:var(--ink);padding:7px 0;border-bottom:1px solid var(--border);line-height:1.6;word-break:keep-all;align-items:flex-start;}
+.notice-row:last-child{border:none;padding-bottom:0;}
+.notice-key{font-weight:700;color:var(--ink);flex-shrink:0;min-width:64px;}
+.notice-ast{font-size:14px;color:var(--ink);padding:4px 0;line-height:1.7;word-break:keep-all;}
+
+/* 구분선 */
+.sec-divider{display:flex;align-items:center;gap:10px;margin:36px 0 22px;}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-divider span{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--ink);}
+
+/* 커리큘럼 */
+.week-table{background:var(--warm-white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:36px;}
+.week-row{display:flex;border-bottom:1px solid var(--border);}
+.week-row:last-child{border:none;}
+.week-num{background:var(--ink);color:var(--gold);font-family:'Noto Serif KR',serif;font-size:12px;font-weight:700;width:64px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:16px 8px;text-align:center;line-height:1.4;}
+.week-body{padding:16px 18px;flex:1;}
+.week-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;word-break:keep-all;}
+.week-desc{font-size:15px;color:var(--ink);line-height:1.6;word-break:keep-all;margin-bottom:5px;}
+.week-key{font-size:12px;color:var(--gold);font-weight:700;}
+
+/* 1주차 헤더 */
+.wk-header{background:var(--ink);border-radius:16px;padding:24px;margin-bottom:18px;}
+.wk-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:20px;background:rgba(201,169,110,.2);color:var(--gold);margin-bottom:10px;}
+.wk-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:var(--warm-white);margin-bottom:4px;line-height:1.4;word-break:keep-all;}
+.wk-sub{font-size:13px;color:rgba(255,255,255,.85);word-break:keep-all;}
+
+/* 메타 */
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.meta-item{background:var(--warm-white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+.meta-label{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--ink);margin-bottom:4px;}
+.meta-value{font-size:15px;color:var(--ink);line-height:1.5;word-break:keep-all;}
+
+/* 팁 */
+.tip-card{background:var(--sage-light);border:1px solid var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:14px;color:#3A6030;font-weight:500;}
+
+/* 모토 */
+.motto{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin-bottom:22px;text-align:center;}
+.motto p{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:600;color:var(--ink);line-height:1.7;word-break:keep-all;}
+
+/* 사진 슬롯 */
+.photo-slot{background:var(--cream);border:2px dashed var(--border);border-radius:14px;padding:36px 20px;margin:16px 0;text-align:center;}
+.photo-slot-icon{font-size:30px;margin-bottom:8px;opacity:.45;}
+.photo-slot-text{font-size:15px;color:var(--ink);}
+
+/* 질문 카드 */
+.q-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:22px 22px;margin-bottom:12px;}
+.q-num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;}
+.q-text{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;word-break:keep-all;line-height:1.5;}
+.q-hint{font-size:14px;color:var(--ink);font-weight:500;font-style:normal;margin-bottom:16px;line-height:1.6;word-break:keep-all;}
+.ans-lines{display:flex;flex-direction:column;gap:0;}
+.ans-line{border-bottom:1px solid var(--border);height:38px;}
+
+/* ======== 잠금 영역 ======== */
+.locked-area{position:relative;margin-top:8px;}
+
+/* 흐릿한 카드들 */
+.blurred-cards{filter:blur(4px);pointer-events:none;user-select:none;opacity:.55;}
+
+/* 잠금 오버레이 */
+.lock-overlay{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  padding:20px;
+}
+.lock-box{
+  background:var(--warm-white);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px 32px;
+  text-align:center;
+  max-width:380px;
+  width:100%;
+  box-shadow:0 8px 40px rgba(44,36,32,.12);
+}
+.lock-icon{font-size:36px;margin-bottom:16px;opacity:.7;}
+.lock-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.5;word-break:keep-all;}
+.lock-desc{font-size:15px;color:var(--ink);line-height:1.8;margin-bottom:24px;word-break:keep-all;}
+.lock-includes{background:var(--cream);border-radius:12px;padding:16px 18px;margin-bottom:24px;text-align:left;}
+.lock-includes-title{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--ink);margin-bottom:10px;}
+.lock-item{display:flex;gap:8px;font-size:15px;color:var(--ink);padding:5px 0;line-height:1.5;word-break:keep-all;}
+.lock-item::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.lock-btn{display:block;background:var(--ink);color:var(--gold);font-size:14px;font-weight:700;letter-spacing:.06em;padding:15px 28px;border-radius:30px;text-decoration:none;margin-bottom:10px;transition:opacity .2s;}
+.lock-btn:hover{opacity:.85;}
+.lock-sub{font-size:14px;color:var(--ink);}
+
+/* 미리보기 라벨 */
+.preview-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#3A6030;background:var(--sage-light);border:1px solid var(--sage);padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+.preview-dot{width:6px;height:6px;border-radius:50%;background:#3A6030;}
+
+/* 주차 푸터 */
+.wk-footer{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center;margin-top:24px;}
+.wk-footer-text{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink);line-height:1.7;word-break:keep-all;}
+.wk-footer-brand{font-size:14px;color:var(--ink);margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-btn" href="index.html">← 목록으로</a>
+
+  <!-- 커버 -->
+  <div class="cover">
+    <p class="cover-org">[좋은어른] 용산구 양성평등기금 사업</p>
+    <p class="cover-event">여성의 삶을 노크하다</p>
+    <p class="cover-title">AI로 기록하는 디지털 자서전 클래스</p>
+    <p class="cover-sub">사진 자서전 워크북</p>
+    <div class="name-box">
+      <span class="name-label">이  름</span>
+      <div class="name-line"></div>
+    </div>
+  </div>
+
+  <!-- 수업 소개 -->
+  <div class="intro-box">
+    <p class="intro-q">50이후 나는 누구로 존재할 것인가?</p>
+    <p class="intro-desc">살아온 시간은 충분히 많은데, 내 이야기를 내 언어로 정리해본 적 있나요?<br><br>좋은어른의 디지털 자서전 클래스는 사진 한 장에서 출발해 삶의 흐름을 돌아보고, 워크북으로 이야기를 정리한 뒤, AI 영상 전문 감독이 30초 자기소개 영상까지 제작하는 수업이 4주간 진행됩니다.</p>
+  </div>
+
+  <!-- 안내 -->
+  <div class="notice-card">
+    <p class="notice-title">안내사항</p>
+    <p class="notice-ast">* 이 수업은 AI 동영상 만드는 과정은 하지 않습니다.</p>
+    <p class="notice-ast">* AI 디지털 자서전은, 완성된 스토리북을 바탕으로 전문 AI 영상 감독님이 제작합니다 (20~30초짜리 영상, 개인별 상이).</p>
+    <p class="notice-ast">* 9월 서울시 양성평등 기간에 맞춰 완성 영상 상영회를 진행합니다.</p>
+  </div>
+
+  <!-- 모집 안내 -->
+  <div class="notice-card">
+    <p class="notice-title">모집 안내</p>
+    <div class="notice-row"><span class="notice-key">수강대상</span><span>용산구 거주 중장년 여성 · 경력단절 여성 · 자기 삶을 정리하고 싶은 여성</span></div>
+    <div class="notice-row"><span class="notice-key">모집인원</span><span>선착순 10명</span></div>
+    <div class="notice-row"><span class="notice-key">수업기간</span><span>2026. 05. 20 ~ 6. 17 (주 1회, 총 4주 / 9월 중 AI 동영상 공유)</span></div>
+    <div class="notice-row"><span class="notice-key">요일</span><span>매주 수요일 12:00~13:30 (90분)</span></div>
+    <div class="notice-row"><span class="notice-key">장소</span><span>서울 용산 여성인력개발센터 3층</span></div>
+    <div class="notice-row"><span class="notice-key">참가비</span><span>무료</span></div>
+    <div class="notice-row"><span class="notice-key">특전</span><span>서울시 양성평등 기간 (9월 3일~7일) 제작된 영상 상영</span></div>
+    <div class="notice-row"><span class="notice-key">준비물</span><span>나를 소개할 대표 사진 1장, 삶을 돌아볼 개인 사진 여러 장</span></div>
+    <div class="notice-row"><span class="notice-key">문의</span><span>goodadult2025@goodadult.co.kr · 카카오톡 좋은어른 검색</span></div>
+  </div>
+
+  <!-- 커리큘럼 -->
+  <div class="sec-divider"><span>4주 커리큘럼</span></div>
+  <div class="week-table">
+    <div class="week-row">
+      <div class="week-num">1주차</div>
+      <div class="week-body">
+        <p class="week-title">찰나의 시선으로 담아낸 나의 사진 자서전</p>
+        <p class="week-desc">대표 사진 한 장으로 "나는 어떤 사람인가"를 말해봅니다.</p>
+        <p class="week-key">한 장의 사진이 내 이야기의 출발점이 됩니다.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-num">2주차</div>
+      <div class="week-body">
+        <p class="week-title">사진으로 살펴보는 나</p>
+        <p class="week-desc">노래 가사와 사진으로 삶의 흐름을 읽고, 내 역할을 찾습니다.</p>
+        <p class="week-key">흩어진 사진이 삶의 흐름으로 연결됩니다.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-num">3주차</div>
+      <div class="week-body">
+        <p class="week-title">나라는 사람, 서사 만들기</p>
+        <p class="week-desc">핵심 장면과 감정의 흐름을 정리하고 자서전 제목을 짓습니다.</p>
+        <p class="week-key">기억은 서사가 되고, 서사는 나를 설명하는 힘이 됩니다.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-num">4주차</div>
+      <div class="week-body">
+        <p class="week-title">완성된 이야기를 발표하고, 공유하는 시간</p>
+        <p class="week-desc">서로의 이야기를 나누고, AI 30초 영상 제작의 기초 자료를 완성합니다.</p>
+        <p class="week-key">발표로 끝나지 않고, 영상 결과물로 이어집니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 1주차 미리보기 (공개) ===== -->
+  <div class="sec-divider"><span>워크북 미리보기</span></div>
+
+  <div class="wk-header">
+    <span class="wk-badge">1주차</span>
+    <p class="wk-title">찰나의 시선으로 담아낸 나의 사진 자서전</p>
+    <p class="wk-sub">대표 사진으로 나를 소개하기</p>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item"><p class="meta-label">수업 목표</p><p class="meta-value">사진을 매개로 자기 자신에 대해 파악하고 이해하는 시간을 가져봅니다</p></div>
+    <div class="meta-item"><p class="meta-label">준비물</p><p class="meta-value">아래 질문에 떠오르는 사진 한 장씩 (실제 사진 또는 스마트폰 사진)</p></div>
+  </div>
+  <div class="tip-card">작성 팁: 정답은 없습니다. 떠오르는 것을 솔직하게 적어주세요.</div>
+
+  <div class="motto"><p>· · · 기억의 서랍을 열어, 나를 만날 준비를 합니다. · · ·</p></div>
+
+  <!-- Q1 공개 -->
+  <span class="preview-label"><div class="preview-dot"></div>무료 미리보기 — 1주차 Q1</span>
+
+  <div class="photo-slot">
+    <div class="photo-slot-icon">🖼</div>
+    <p class="photo-slot-text">마음에 드는 사진을 붙여주세요</p>
+  </div>
+
+  <div class="q-card">
+    <p class="q-num">Q1</p>
+    <p class="q-text">가장 마음에 드는 사진은 무엇인가요?</p>
+    <p class="q-hint">어째서 이 사진이 그토록 마음에 드시나요? 그때의 기분이나 분위기를 떠올려 보세요.</p>
+    <div class="ans-lines">
+      <div class="ans-line"></div>
+      <div class="ans-line"></div>
+      <div class="ans-line"></div>
+    </div>
+  </div>
+
+  <!-- ===== 잠금 영역 ===== -->
+  <div class="locked-area">
+
+    <!-- 흐릿하게 보이는 나머지 카드들 -->
+    <div class="blurred-cards">
+      <div class="q-card" style="margin-bottom:12px;">
+        <p class="q-num">Q2</p>
+        <p class="q-text">가장 마음에 들지 않는 사진은 무엇인가요?</p>
+        <p class="q-hint">숨기고 싶었던 감정이나 상황이 있었는지 적어 보세요.</p>
+        <div class="ans-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      </div>
+      <div class="q-card" style="margin-bottom:12px;">
+        <p class="q-num">Q3</p>
+        <p class="q-text">나의 비포(Before)와 애프터(After)를 나눈다면?</p>
+        <p class="q-hint">내 삶을 두 장의 사진으로 나눈다면, 그 기준과 계기는 무엇인가요?</p>
+        <div class="ans-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      </div>
+      <div class="q-card" style="margin-bottom:12px;">
+        <p class="q-num">Q4</p>
+        <p class="q-text">내가 드라마 주인공이라면, 어떤 사진 속으로 들어가고 싶나요?</p>
+        <p class="q-hint">그 이유는 무엇인가요? 다시 그 순간으로 돌아간다면 무엇을 하고 싶나요?</p>
+        <div class="ans-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      </div>
+      <!-- 2주차 미리보기 -->
+      <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-top:24px;margin-bottom:12px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;">2주차</p>
+        <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">사진으로 살펴보는 나</p>
+        <p style="font-size:15px;color:var(--ink);">노래 가사와 사진으로 내 역할 찾기 — Q1~Q6</p>
+      </div>
+      <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:12px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;">3주차</p>
+        <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">나라는 사람, 서사 만들기</p>
+        <p style="font-size:15px;color:var(--ink);">자서전 주제 문장 완성 + 체크리스트 — Q1~Q5</p>
+      </div>
+      <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:12px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;">4주차</p>
+        <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">완성된 이야기를 발표하고 공유하기</p>
+        <p style="font-size:15px;color:var(--ink);">30초 영상 핵심 문장 완성 — Q1~Q4</p>
+      </div>
+    </div>
+
+    <!-- 잠금 오버레이 -->
+    <div class="lock-overlay">
+      <div class="lock-box">
+        <div class="lock-icon">🔒</div>
+        <p class="lock-title">전체 워크북은<br>수업 신청 후 제공됩니다</p>
+        <p class="lock-desc">1주차 Q2~Q4, 2·3·4주차 워크북 전체와<br>AI 30초 영상 대본 작성까지 —<br>수업에 참여하시면 모두 함께합니다.</p>
+        <div class="lock-includes">
+          <p class="lock-includes-title">수업에서 받게 되는 것들</p>
+          <div class="lock-item">4주 전체 워크북 (1~4주차)</div>
+          <div class="lock-item">윤복희 〈여러분〉 가사 활동지</div>
+          <div class="lock-item">자서전 주제 문장 완성 워크시트</div>
+          <div class="lock-item">AI 영상 감독의 30초 대본 작성 지원</div>
+          <div class="lock-item">완성된 30초 자기소개 영상 제공</div>
+        </div>
+        <a class="lock-btn" href="https://www.goodadult.co.kr/board/view/38/168" target="_blank">
+          여성의 삶을 노크하다 → 신청하기
+        </a>
+        <p class="lock-sub">참가비 무료 · 선착순 10명</p>
+      </div>
+    </div>
+
+  </div><!-- /locked-area -->
+
+  <div class="wk-footer" style="margin-top:16px;">
+    <p class="wk-footer-text">당신의 모든 시간과 사진 속 풍경들이 모여,<br>지금의 아름다운 당신을 만들었습니다</p>
+    <p class="wk-footer-brand">좋은어른 · @goodadult2025</p>
+  </div>
+
+</div>
+</body>
+</html>

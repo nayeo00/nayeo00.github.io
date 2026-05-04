@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>페르소나 — 이정은 (52세)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+:root {
+  --cream:#FAF7F2; --warm-white:#FFFDF9; --ink:#2C2420; --ink-light:#6B5E58;
+  --ink-muted:#A89990; --blush:#E8C4B8; --blush-light:#F5E6E0;
+  --sage:#B8C9B0; --sage-light:#EDF2EB; --gold:#C9A96E; --gold-light:#F5EDD8;
+  --border:#E8E0D8; --lav-light:#F0EDF8; --lav:#D4CAE8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);font-weight:400;line-height:1.8;}
+.wrap{max-width:680px;margin:0 auto;padding:52px 24px 80px;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-light);text-decoration:none;margin-bottom:40px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:var(--warm-white);}
+.back-btn:hover{border-color:var(--gold);color:var(--ink);}
+
+/* 상단 */
+.persona-hero{background:#EEEDFE;border-radius:20px;padding:28px 28px;margin-bottom:32px;display:flex;align-items:center;gap:18px;}
+.avatar{width:60px;height:60px;border-radius:50%;background:#7F77DD;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;flex-shrink:0;}
+.persona-name{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:#26215C;margin-bottom:4px;}
+.persona-desc{font-size:13px;color:#534AB7;line-height:1.5;font-weight:400;}
+
+.page-badge{display:inline-block;background:var(--sage-light);border:1px solid var(--sage);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.1em;color:#4A6A40;margin-bottom:12px;}
+
+.sec-divider{display:flex;align-items:center;gap:10px;margin:36px 0 18px;}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-divider span{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-muted);}
+
+/* 요약 표 */
+.card{background:var(--warm-white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+td:first-child{color:var(--ink-muted);width:38%;font-size:12px;font-weight:500;background:var(--cream);}
+td:last-child{color:var(--ink);font-weight:400;}
+tr:last-child td{border:none;}
+
+/* 스토리 블록 */
+.story-block{margin-bottom:18px;}
+.story-label{font-size:11px;font-weight:700;color:#534AB7;letter-spacing:.08em;margin-bottom:6px;}
+.story-text{font-size:14px;color:var(--ink);line-height:1.9;word-break:keep-all;font-weight:400;}
+
+/* 꿈의 댓글 */
+.comment-box{background:var(--blush-light);border-left:3px solid var(--blush);border-radius:0 12px 12px 0;padding:20px 22px;}
+.comment-handle{font-size:12px;font-weight:700;color:#8A4A3A;margin-bottom:10px;}
+.comment-text{font-size:13.5px;color:var(--ink);line-height:1.9;word-break:keep-all;font-weight:400;}
+.comment-em{font-weight:700;color:#6B2A2A;}
+
+/* CTA 연결 */
+.cta-example{background:var(--ink);border-radius:14px;padding:20px 22px;color:var(--warm-white);}
+.cta-label{font-size:11px;letter-spacing:.12em;color:var(--gold);font-weight:500;margin-bottom:8px;}
+.cta-text{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:var(--warm-white);line-height:1.8;word-break:keep-all;}
+
+/* 태그 */
+.tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+.tag{font-size:12px;padding:4px 11px;border-radius:20px;font-weight:500;}
+.tag-p{background:#EEEDFE;color:#3C3489;}
+.tag-s{background:var(--sage-light);color:#3A6030;}
+.tag-b{background:var(--blush-light);color:#8A4A3A;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-btn" href="index.html">← 목록으로</a>
+
+  <div class="page-badge">PERSONA</div>
+
+  <div class="persona-hero">
+    <div class="avatar">이</div>
+    <div>
+      <p class="persona-name">이정은 (52세)</p>
+      <p class="persona-desc">"25년을 가족의 이야기 속에 살았는데,<br>내 이야기는 한 번도 정리해본 적이 없었어요"</p>
+    </div>
+  </div>
+
+  <!-- 요약 표 -->
+  <div class="sec-divider"><span>기본 프로필</span></div>
+  <div class="card">
+    <table>
+      <tr><td>나이 / 직업</td><td>52세, 전업주부 (전직 초등교사, 10년 전 육아로 퇴직)</td></tr>
+      <tr><td>교육 수준</td><td>대졸 (국문학 전공)</td></tr>
+      <tr><td>소득</td><td>남편 소득 의존. "내 돈"이 없다는 심리적 불편함</td></tr>
+      <tr><td>결혼 / 자녀</td><td>기혼 25년 차. 딸 1명 대학 입학 후 빈 둥지 증후군 중</td></tr>
+      <tr><td>취미</td><td>사진 찍기, 오래된 일기 다시 읽기, 친구들과 걷기</td></tr>
+      <tr><td>거주지</td><td>경기도 수원 (조용한 아파트 단지)</td></tr>
+      <tr><td>소비 미디어</td><td>네이버 블로그, 유튜브 중년 브이로그, 카카오스토리</td></tr>
+      <tr><td>핵심 가치</td><td>진정성, 가족, 조금씩 싹트는 "나다움"</td></tr>
+    </table>
+  </div>
+
+  <!-- 심리 -->
+  <div class="sec-divider"><span>심리 · 감정</span></div>
+  <div class="card">
+    <table>
+      <tr><td>스트레스 요인</td><td>역할 상실감. "50이 넘으니 점점 투명해지는 느낌"</td></tr>
+      <tr><td>인생의 목표</td><td>내 이름이 붙은 무언가를 남기고 싶다. 딸에게 엄마의 이야기를 전하고 싶다</td></tr>
+      <tr><td>동기부여</td><td>딸이 "엄마 글 잘 쓰는 것 같던데"라고 한 마디</td></tr>
+      <tr><td>삶의 만족도</td><td>물질적 결핍은 없지만 존재의 공허함. "열심히 살았는데 나만 남은 게 없는 느낌"</td></tr>
+      <tr><td>콘텐츠 클릭 동기</td><td>"나만 이런 거 아니구나" 싶은 순간. 공감이 먼저, 정보는 나중</td></tr>
+      <tr><td>가장 큰 고충</td><td>"내 이야기가 남한테 의미 있을까?" "카메라 앞이 너무 부담스럽다" "이 나이에 시작해도 될까?"</td></tr>
+      <tr><td>수업에 대한 태도</td><td>AI·영상에 거리감. 그러나 "사진 한 장"이라는 말에 마음이 열린다</td></tr>
+      <tr><td>신청 결정적 순간</td><td>"사진 한 장"이라는 말을 보고 직접 앨범을 열어본 그 순간</td></tr>
+    </table>
+  </div>
+
+  <!-- 가치 문장 -->
+  <div class="sec-divider"><span>가치 문장</span></div>
+  <div class="cta-example">
+    <p class="cta-label">이 수업이 이 사람에게 주는 것</p>
+    <p class="cta-text">"이 수업을 마치고 나면, 그 사람은 처음으로 자녀에게 '엄마가 어떻게 살았는지'를 30초로 보여줄 수 있게 됩니다."</p>
+  </div>
+
+  <!-- 스토리 -->
+  <div class="sec-divider"><span>페르소나 스토리</span></div>
+  <div class="card" style="padding:24px;">
+    <div class="story-block">
+      <p class="story-label">배경</p>
+      <p class="story-text">결혼 25년 차, 전직 초등교사. 딸이 대학에 들어간 해부터 처음으로 하루가 비어있는 것을 경험했습니다. 일기를 꾸준히 써왔고, 사진 찍기를 좋아하지만 그것이 콘텐츠나 이야기가 될 수 있다는 생각은 한 번도 해보지 않았습니다.</p>
+    </div>
+    <div class="story-block">
+      <p class="story-label">결핍과 갈망</p>
+      <p class="story-text">자녀에게 "엄마가 어떻게 살았는지"를 전하고 싶지만 어디서부터 시작해야 할지 모릅니다. 카메라 앞에 서는 것은 두렵지만, 내 삶을 누군가 귀하게 담아줬으면 하는 마음이 있습니다. "사진 한 장"이라는 말에 가장 먼저 반응합니다 — 그건 이미 내가 가진 것이니까요.</p>
+    </div>
+    <div class="story-block">
+      <p class="story-label">좋은어른과의 연결고리</p>
+      <p class="story-text">디지털 자서전 클래스가 기술 수업이 아니라 "내 이야기를 정리하는 수업"이라는 것을 알게 된 순간, 경계가 풀립니다. AI 영상 감독이 대신 만들어준다는 말에 "내가 잘 못해도 된다"는 안도감을 느낍니다.</p>
+    </div>
+    <div class="story-block">
+      <p class="story-label">단 한 번의 감동 포인트</p>
+      <p class="story-text">완성된 30초 영상 속에서 자신의 목소리와 얼굴을 처음으로 "작품"으로 보게 되는 순간. 딸에게 그 영상을 보내주고 "엄마 멋있다"는 답장을 받는 그 5분.</p>
+    </div>
+  </div>
+
+  <!-- 꿈의 댓글 -->
+  <div class="sec-divider"><span>꿈의 댓글</span></div>
+  <div class="comment-box">
+    <p class="comment-handle">@jeongeun_52_now</p>
+    <p class="comment-text">
+      댓글 이런 거 처음 달아봐요. 그냥 지나칠 수가 없어서요.<br><br>
+      올해 52살인데, 딸 대학 보내고 나서 처음으로 하루가 텅 빈 게 느껴졌어요. 자꾸 <span class="comment-em">"나는 이제 뭐지?"</span>라는 생각이 드는 거예요.<br><br>
+      그러다 선생님 블로그에서 <span class="comment-em">'사진 한 장이 이야기가 되는 순간'</span> 글을 읽었어요. 앨범에서 제일 오래된 사진을 찾아봤는데 — 아이 처음 안았던 날 사진이더라고요. 그 사진 보면서 처음으로 내 이야기를 써보고 싶다는 생각이 들었어요.<br><br>
+      용기 내서 신청했고, 수업 마지막 날 AI 감독님이 만들어준 30초 영상을 딸한테 보냈어요. 딸이 <span class="comment-em">"엄마, 나 이거 평생 보관할게"</span>라고 했을 때 — 그냥 엉엉 울었어요.<br><br>
+      25년 동안 가족 사진만 찍고 살았는데, 처음으로 제가 주인공인 영상이 생겼어요. 정말 감사드립니다.
+    </p>
+  </div>
+
+  <!-- 태그 -->
+  <div class="sec-divider"><span>말투 · 콘텐츠 키워드</span></div>
+  <div class="tag-row">
+    <span class="tag tag-p">친구처럼 따뜻하게</span>
+    <span class="tag tag-p">어렵지 않게</span>
+    <span class="tag tag-b">공감 먼저</span>
+    <span class="tag tag-b">판단 없이</span>
+    <span class="tag tag-s">나도 할 수 있다는 증거</span>
+    <span class="tag tag-s">이야기 · 존재 · 언어</span>
+  </div>
+
+</div>
+</body>
+</html>

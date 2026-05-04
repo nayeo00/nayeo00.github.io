@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>52살에 처음으로 카메라 앞에 섰습니다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  :root {
+    --cream:#FAF7F2; --warm-white:#FFFDF9; --ink:#2C2420; --ink-light:#6B5E58;
+    --ink-muted:#A89990; --blush:#E8C4B8; --blush-light:#F5E6E0;
+    --sage:#B8C9B0; --sage-light:#EDF2EB; --gold:#C9A96E; --gold-light:#F5EDD8;
+    --border:#E8E0D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);line-height:1.9; font-weight: 400; font-weight:400;}
+  .wrap{max-width:680px;margin:0 auto;padding:60px 24px 100px;}
+  .brand-bar{display:flex;align-items:center;gap:10px;margin-bottom:56px;}
+  .brand-dot{width:9px; height:9px;border-radius:50%;background:var(--gold);}
+  .brand-name{font-family:'Noto Serif KR',serif;font-size:13px;letter-spacing:.12em; font-weight: 500;color: var(--ink);}
+  .brand-bar-line{flex:1;height:1px;background:var(--border);}
+  .day-tag{font-size:11px;letter-spacing:.1em;color: var(--ink-light); font-weight: 500;}
+  .hero{margin-bottom:48px;}
+  .category-chip{display:inline-block;font-size: 12px;letter-spacing:.1em;color:#B08060;border:1px solid #B08060;padding:4px 12px;border-radius:20px;margin-bottom:20px;font-weight: 500;}
+  .post-title{font-family:'Noto Serif KR',serif;font-size:30px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:20px;word-break:keep-all;}
+  .post-subtitle{font-size:15px;color:var(--ink-light);line-height:1.8;word-break:keep-all;}
+  .deco-line{display:flex;align-items:center;gap:12px;margin:40px 0;}
+  .deco-line::before,.deco-line::after{content:'';flex:1;height:1px;background:var(--border);}
+  .deco-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+  .body-text{font-size:15.5px;line-height:2.0;color:var(--ink);margin-bottom:28px;font-weight: 400; word-break:keep-all;}
+  .body-text.lead{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);font-weight:400;}
+  .section-heading{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--ink);margin:44px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--ink);word-break:keep-all;}
+  .em-text{background:linear-gradient(transparent 60%,var(--blush) 60%);font-weight:500;}
+
+  /* 두려움 vs 현실 카드 */
+  .compare-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 36px 0;
+  }
+  .compare-card {
+    border-radius: 12px;
+    padding: 24px 20px;
+  }
+  .compare-card.fear {
+    background: var(--blush-light);
+    border: 1px solid var(--blush);
+  }
+  .compare-card.reality {
+    background: var(--sage-light);
+    border: 1px solid var(--sage);
+  }
+  .compare-label {
+    font-size: 11px;
+    letter-spacing: .1em;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .fear .compare-label { color: #A0806A; }
+  .reality .compare-label { color: #6A8A60; }
+  .compare-items { list-style: none; }
+  .compare-items li {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .compare-items li:last-child { border: none; }
+
+  .quote-block{background:var(--gold-light);border-left:3px solid var(--gold);padding:24px 28px;margin:36px 0;border-radius:0 8px 8px 0;}
+  .quote-block p{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink);line-height:1.9; font-weight:400;font-weight:400;word-break:keep-all;}
+
+  /* AI 감독 소개 */
+  .director-card {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 32px 32px;
+    margin: 36px 0;
+    color: var(--warm-white);
+  }
+  .director-label {
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .director-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    line-height: 1.5;
+  }
+  .director-list { list-style: none; }
+  .director-list li {
+    font-size: 14px;
+    color: rgba(255,255,255,.75);
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    gap: 10px;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .director-list li:last-child { border: none; }
+  .director-list li::before {
+    content: '✓';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .cta-box{background:var(--ink);border-radius:16px;padding:36px 32px;margin-top:56px;text-align:center;}
+  .cta-eyebrow{font-size:11px;letter-spacing:.15em;color:var(--gold);margin-bottom:14px;}
+  .cta-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--warm-white);line-height:1.6;margin-bottom:16px;word-break:keep-all;}
+  .cta-desc{font-size:13.5px;color:var(--ink-muted);line-height:1.8;margin-bottom:24px;word-break:keep-all;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.08em;padding:13px 32px;border-radius:30px;text-decoration:none;}
+  .footer-note{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .footer-brand{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--ink-muted);letter-spacing:.08em;}
+  .footer-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{font-size:11px;color:var(--ink-muted);background:var(--sage-light);padding:3px 10px;border-radius:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-bar">
+    <div class="brand-dot"></div>
+    <span class="brand-name">좋은어른 · 디지털 자서전 클래스</span>
+    <div class="brand-bar-line"></div>
+    <span class="day-tag">DAY 4</span>
+  </div>
+
+  <div class="hero">
+    <span class="category-chip">용기 이야기</span>
+    <h1 class="post-title">52살에 처음으로 카메라 앞에 섰습니다 —<br>두렵지 않았다면 거짓말이지만</h1>
+    <p class="post-subtitle">카메라는 AI 영상 감독이 다 알아서 해줍니다. 당신은 이야기만 가져오시면 됩니다</p>
+  </div>
+
+  <div class="deco-line"><div class="deco-diamond"></div></div>
+
+  <p class="body-text lead">솔직히 말할게요. 카메라 앞에 서는 것이 가장 무서웠습니다.</p>
+
+  <p class="body-text">글쓰기는 혼자 할 수 있고, 워크북도 집에서 할 수 있는데 — 영상은 달랐어요. 내 얼굴이, 내 목소리가, 내 표정이 기록된다는 것이 생각보다 훨씬 두렵게 느껴졌습니다. "나는 카메라 체질이 아니야", "어색하게 나오면 어떡하지"라는 생각이 먼저 왔어요.</p>
+
+  <p class="body-text">아마 많은 분들이 같은 이유로 망설이실 것 같아서, 솔직하게 써보려 합니다.</p>
+
+  <div class="compare-wrap">
+    <div class="compare-card fear">
+      <p class="compare-label">내가 상상했던 것</p>
+      <ul class="compare-items">
+        <li>혼자 카메라 앞에 앉아야 할 것 같은 느낌</li>
+        <li>여러 번 다시 찍어야 할 것 같은 부담</li>
+        <li>어색하고 부자연스럽게 나올 것 같은 두려움</li>
+        <li>뭐라고 해야 할지 몰라 말이 막힐 것 같은 공포</li>
+      </ul>
+    </div>
+    <div class="compare-card reality">
+      <p class="compare-label">실제로는</p>
+      <ul class="compare-items">
+        <li>AI 영상 감독이 처음부터 끝까지 옆에 있어요</li>
+        <li>워크북에 쓴 내 글이 대본이 됩니다</li>
+        <li>자연스러운 것이 가장 아름답다고 알려줘요</li>
+        <li>이미 내 말로 쓴 글이니까 막히지 않아요</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-heading">카메라가 무서운 이유는 하나입니다</h2>
+
+  <p class="body-text">"내가 어떻게 보일까"가 두려운 것이에요. 그런데 한 가지만 기억하세요. <span class="em-text">가장 아름다운 영상은 꾸미지 않은 진심에서 나옵니다.</span> 배우처럼 잘 말할 필요 없어요. 52년을 살아온 당신의 얼굴과 목소리 자체가 이미 이야기입니다.</p>
+
+  <div class="director-card">
+    <p class="director-label">AI스토리랩 영상 감독이 함께 하는 것들</p>
+    <p class="director-title">당신은 이야기만 가져오시면 됩니다</p>
+    <ul class="director-list">
+      <li>워크북 내용을 바탕으로 30초 대본을 함께 정리해드립니다</li>
+      <li>어떤 표정, 어떤 톤으로 말하면 좋을지 안내해드립니다</li>
+      <li>촬영 각도와 빛, 배경까지 함께 세팅합니다</li>
+      <li>완성된 영상을 보정하고 자막과 음악까지 입혀드립니다</li>
+      <li>최종 30초 영상을 파일로 전달해드립니다</li>
+    </ul>
+  </div>
+
+  <div class="quote-block">
+    <p>두려움은 당연합니다. 처음이니까요.<br>그런데 그 두려움을 넘어서면, 처음으로 내가 주인공인 영상이 생깁니다.<br>그 순간의 뿌듯함 — 해보지 않으면 모릅니다.</p>
+  </div>
+
+  <p class="body-text">저도 카메라 앞에 처음 섰을 때 손이 조금 떨렸습니다. 그런데 AI 영상 감독이 "자연스러운 게 가장 예쁘다"고 말해주는 순간, 이상하게 긴장이 풀렸어요. 내가 잘할 필요가 없다는 것을 알게 되니까요.</p>
+
+  <div class="cta-box">
+    <p class="cta-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="cta-title">카메라는 AI 영상 감독이,<br>이야기는 당신이</p>
+    <p class="cta-desc">혼자가 아닙니다. 처음부터 끝까지 함께합니다.</p>
+    <a class="cta-btn" href="https://www.goodadult.co.kr/board/view/38/168">여성의 삶을 노크하다 → 신청하기</a>
+  </div>
+
+  <div class="footer-note">
+    <span class="footer-brand">좋은어른</span>
+    <div class="footer-tags">
+      <span class="tag">#자기소개영상</span>
+      <span class="tag">#AI영상</span>
+      <span class="tag">#중년여성</span>
+      <span class="tag">#좋은어른</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

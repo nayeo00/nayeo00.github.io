@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 한 장이 이야기가 되는 순간</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  :root {
+    --cream: #FAF7F2; --warm-white: #FFFDF9; --ink: #2C2420; --ink-light: #6B5E58;
+    --ink-muted: #A89990; --blush: #E8C4B8; --blush-light: #F5E6E0;
+    --sage: #B8C9B0; --sage-light: #EDF2EB; --gold: #C9A96E; --gold-light: #F5EDD8;
+    --border: #E8E0D8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--cream); font-family:'Noto Sans KR',sans-serif; color:var(--ink); line-height:1.9; font-weight: 400; font-weight:400;  }
+  .wrap { max-width:680px; margin:0 auto; padding:60px 24px 100px; }
+  .brand-bar { display:flex; align-items:center; gap:10px; margin-bottom:56px; }
+  .brand-dot { width:9px; height:9px; border-radius:50%; background:var(--gold); }
+  .brand-name { font-family:'Noto Serif KR',serif; font-size:13px;  letter-spacing:.12em; font-weight: 500; color: var(--ink); }
+  .brand-bar-line { flex:1; height:1px; background:var(--border); }
+  .day-tag { font-size:11px; letter-spacing:.1em; color: var(--ink-light); font-weight: 500; }
+  .hero { margin-bottom:48px; }
+  .category-chip { display:inline-block; font-size: 12px; letter-spacing:.1em; color:var(--sage); border:1px solid var(--sage); padding:4px 12px; border-radius:20px; margin-bottom:20px; font-weight: 500; }
+  .post-title { font-family:'Noto Serif KR',serif; font-size:30px; font-weight:600; line-height:1.45; color:var(--ink); margin-bottom:20px; word-break:keep-all; }
+  .post-subtitle { font-size:15px; color:var(--ink-light); line-height:1.8; word-break:keep-all; }
+  .deco-line { display:flex; align-items:center; gap:12px; margin:40px 0; }
+  .deco-line::before, .deco-line::after { content:''; flex:1; height:1px; background:var(--border); }
+  .deco-diamond { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
+  .body-text { font-size:15.5px; line-height:2.0; color:var(--ink); margin-bottom:28px; font-weight: 400; word-break:keep-all; }
+  .body-text.lead { font-family:'Noto Serif KR',serif; font-size:17px; color:var(--ink); font-weight:400; }
+  .quote-block { background:var(--sage-light); border-left:3px solid var(--sage); padding:24px 28px; margin:36px 0; border-radius:0 8px 8px 0; }
+  .quote-block p { font-family:'Noto Serif KR',serif; font-size:16px; color:var(--ink); line-height:1.9; font-weight:400; font-weight:400; word-break:keep-all; }
+
+  /* 사진 미션 카드 */
+  .mission-card {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin: 40px 0;
+    color: var(--warm-white);
+  }
+  .mission-label {
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .mission-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+  .mission-steps {
+    list-style: none;
+    counter-reset: step;
+  }
+  .mission-steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    font-size: 14px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .mission-steps li:last-child { border:none; }
+  .mission-steps li::before {
+    content: counter(step);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .section-heading { font-family:'Noto Serif KR',serif; font-size:19px; font-weight:600; color:var(--ink); margin:44px 0 16px; padding-bottom:10px; border-bottom:2px solid var(--ink); word-break:keep-all; }
+  .em-text { background:linear-gradient(transparent 60%, var(--sage) 60%); font-weight:500; }
+
+  /* 감성 인용 */
+  .italic-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink-light);
+    line-height: 1.8;
+    text-align: center;
+    padding: 32px 16px;
+    word-break: keep-all;
+  }
+
+  .cta-box { background:var(--ink); border-radius:16px; padding:36px 32px; margin-top:56px; text-align:center; }
+  .cta-eyebrow { font-size:11px; letter-spacing:.15em; color:var(--gold); margin-bottom:14px; }
+  .cta-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:600; color:var(--warm-white); line-height:1.6; margin-bottom:16px; word-break:keep-all; }
+  .cta-desc { font-size:13.5px; color:var(--ink-muted); line-height:1.8; margin-bottom:24px; word-break:keep-all; }
+  .cta-btn { display:inline-block; background:var(--gold); color:var(--ink); font-size:13px; font-weight:500; letter-spacing:.08em; padding:13px 32px; border-radius:30px; text-decoration:none; }
+  .footer-note { margin-top:48px; padding-top:24px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .footer-brand { font-family:'Noto Serif KR',serif; font-size:12px; color:var(--ink-muted); letter-spacing:.08em; }
+  .footer-tags { display:flex; gap:8px; flex-wrap:wrap; }
+  .tag { font-size:11px; color:var(--ink-muted); background:var(--sage-light); padding:3px 10px; border-radius:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-bar">
+    <div class="brand-dot"></div>
+    <span class="brand-name">좋은어른 · 디지털 자서전 클래스</span>
+    <div class="brand-bar-line"></div>
+    <span class="day-tag">DAY 2</span>
+  </div>
+
+  <div class="hero">
+    <span class="category-chip">사진 한 장</span>
+    <h1 class="post-title">사진 한 장이 이야기가 되는 순간 —<br>내 앨범 속 가장 오래된 사진을 꺼내본 날</h1>
+    <p class="post-subtitle">디지털 자서전 클래스의 첫 번째 숙제를 혼자 해봤습니다</p>
+  </div>
+
+  <div class="deco-line"><div class="deco-diamond"></div></div>
+
+  <p class="body-text lead">지금 잠깐, 핸드폰 갤러리를 열어보세요.<br>가장 오래된 사진이 무엇인가요?</p>
+
+  <p class="body-text">저는 그 사진을 찾는 데 생각보다 오래 걸렸어요. 스크롤을 한참 올려야 했고, 나오는 사진마다 잠깐씩 멈추게 됐습니다. 아이의 돌잔치, 남편과 처음 간 해외여행, 막내가 처음 걷던 날. 그 사진들 속에서 나는 늘 찍는 사람이었지, 찍히는 사람이 아니었습니다.</p>
+
+  <p class="body-text">가장 오래된 사진을 드디어 찾았을 때 — 저는 한참을 들여다봤습니다. 아이를 처음 안은 날이었어요.</p>
+
+  <div class="quote-block">
+    <p>그 사진을 보며 처음으로 생각했어요.<br>"이게 내 이야기의 시작이구나."</p>
+  </div>
+
+  <h2 class="section-heading">사진은 이미 이야기입니다</h2>
+
+  <p class="body-text">우리는 글을 잘 써야 이야기를 할 수 있다고 생각합니다. 그런데 사실 이야기는 이미 사진 속에 있어요. 그 순간의 빛, 표정, 배경 — 그것이 전부 당신만의 서사입니다.</p>
+
+  <p class="body-text">디지털 자서전 클래스는 바로 그 사진 한 장에서 출발합니다. <span class="em-text">글쓰기 실력이 필요한 것이 아니라, 그 사진 앞에서 잠깐 머무는 용기</span>만 있으면 됩니다.</p>
+
+  <div class="mission-card">
+    <p class="mission-label">지금 바로 해보는 작은 미션</p>
+    <p class="mission-title">사진 한 장 꺼내기</p>
+    <ol class="mission-steps">
+      <li>갤러리에서 가장 오래된 사진, 또는 가장 의미 있는 사진 한 장을 고릅니다</li>
+      <li>그 사진을 찍은 날이 언제인지, 어디였는지 떠올려 봅니다</li>
+      <li>그때 내 기분이 어땠는지 단어 세 개만 적어봅니다</li>
+      <li>그것으로 충분합니다 — 이야기는 이미 시작된 거예요</li>
+    </ol>
+  </div>
+
+  <h2 class="section-heading">이야기는 거창하지 않아도 됩니다</h2>
+
+  <p class="body-text">세상에 공개할 만큼 특별한 이야기가 아니어도 됩니다. 딸에게 보여줄 수 있을 만큼, 나 자신이 "맞아, 이게 나였지"라고 고개를 끄덕일 수 있을 만큼이면 충분합니다.</p>
+
+  <p class="body-text">오히려 평범한 이야기가 가장 오래 남습니다. 누군가의 엄마가 아니라, 한 사람의 여성으로서 살아온 시간이 — 가장 귀한 이야기입니다.</p>
+
+  <div class="italic-quote">
+    "살아온 시간은 충분히 많은데,<br>내 이야기를 내 언어로 정리해본 적 있나요?"
+  </div>
+
+  <div class="cta-box">
+    <p class="cta-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="cta-title">살아온 시간을 사진 한 장으로 꺼내는 수업,<br>함께해요</p>
+    <p class="cta-desc">사진 → 워크북 → 30초 영상까지.<br>AI 영상 감독이 처음부터 끝까지 함께합니다.</p>
+    <a class="cta-btn" href="https://www.goodadult.co.kr/board/view/38/168">여성의 삶을 노크하다 → 신청하기</a>
+  </div>
+
+  <div class="footer-note">
+    <span class="footer-brand">좋은어른</span>
+    <div class="footer-tags">
+      <span class="tag">#사진한장</span>
+      <span class="tag">#디지털자서전</span>
+      <span class="tag">#중년여성</span>
+      <span class="tag">#좋은어른</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

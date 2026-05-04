@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50이 넘으면 점점 투명해지는 느낌, 저만 그런가요?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --ink: #2C2420;
+    --ink-light: #6B5E58;
+    --ink-muted: #A89990;
+    --blush: #E8C4B8;
+    --blush-light: #F5E6E0;
+    --sage: #B8C9B0;
+    --sage-light: #EDF2EB;
+    --gold: #C9A96E;
+    --gold-light: #F5EDD8;
+    --border: #E8E0D8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink);
+    line-height: 1.9; font-weight: 500;
+    
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  /* 상단 브랜드 */
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 56px;
+  }
+  .brand-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .brand-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--ink);
+  }
+  .brand-bar-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .day-tag {
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: var(--ink); font-weight: 500;
+  }
+
+  /* 제목 영역 */
+  .hero {
+    margin-bottom: 48px;
+  }
+  .category-chip {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .post-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 20px;
+    word-break: keep-all;
+  }
+  .post-subtitle {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.8;
+    word-break: keep-all;
+  }
+
+  /* 장식선 */
+  .deco-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0;
+  }
+  .deco-line::before, .deco-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .deco-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* 본문 */
+  .body-text {
+    font-size: 15.5px;
+    line-height: 2.0;
+    color: var(--ink);
+    margin-bottom: 28px;
+    word-break: keep-all;
+  }
+  .body-text.lead {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* 인용 블록 */
+  .quote-block {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    margin: 36px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .quote-block p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.9;
+    font-weight: 500;
+    word-break: keep-all;
+  }
+
+  /* 감성 카드 */
+  .feeling-card {
+    background: var(--blush-light);
+    border-radius: 12px;
+    padding: 28px 28px;
+    margin: 36px 0;
+  }
+  .feeling-card .label {
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .feeling-list {
+    list-style: none;
+  }
+  .feeling-list li {
+    font-size: 15px;
+    color: var(--ink);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--blush);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .feeling-list li:last-child { border-bottom: none; }
+  .feeling-list li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  /* 섹션 제목 */
+  .section-heading {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 44px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+    word-break: keep-all;
+  }
+
+  /* 강조 텍스트 */
+  .em-text {
+    background: linear-gradient(transparent 60%, var(--blush) 60%);
+    font-weight: 500;
+  }
+
+  /* CTA 박스 */
+  .cta-box {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin-top: 56px;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .cta-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--warm-white);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    word-break: keep-all;
+  }
+  .cta-desc {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    word-break: keep-all;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    padding: 13px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+  }
+
+  /* 하단 */
+  .footer-note {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 12px;
+    color: var(--ink);
+    letter-spacing: .08em;
+  }
+  .footer-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 11px;
+    color: var(--ink);
+    background: var(--sage-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-bar">
+    <div class="brand-dot"></div>
+    <span class="brand-name">좋은어른 · 디지털 자서전 클래스</span>
+    <div class="brand-bar-line"></div>
+    <span class="day-tag">DAY 1</span>
+  </div>
+
+  <div class="hero">
+    <span class="category-chip">번아웃 탈출기</span>
+    <h1 class="post-title">"50이 넘으면 점점 투명해지는 느낌,<br>저만 그런가요?"</h1>
+    <p class="post-subtitle">역할이 사라진 자리에서 처음으로 나를 마주한 이야기</p>
+  </div>
+
+  <div class="deco-line"><div class="deco-diamond"></div></div>
+
+  <p class="body-text lead">
+    딸아이가 기숙사로 짐을 옮기던 날, 처음으로 집이 낯설었습니다.
+  </p>
+
+  <p class="body-text">
+    25년을 가족의 시간표에 맞춰 살았는데, 그 시간표가 사라지고 나니 — 나는 무엇을 해야 하는지 몰랐습니다. 아침에 일어나도 급할 것이 없고, 저녁을 차려도 먹을 사람이 없고. 처음엔 '좀 쉬면 되겠지'라고 생각했어요.
+  </p>
+
+  <p class="body-text">
+    그런데 쉬는 게 이렇게 무거울 줄 몰랐습니다.
+  </p>
+
+  <div class="quote-block">
+    <p>"나는 충분히 열심히 살았는데,<br>왜 이렇게 남은 게 없는 느낌일까."</p>
+  </div>
+
+  <p class="body-text">
+    혹시 이런 생각, 해보신 적 있으신가요? 슬픈 것도 아니고, 아픈 것도 아닌데 — 그냥 뭔가 텅 빈 것 같은 그 느낌. 저는 오랫동안 그게 나만의 문제인 줄 알았습니다.
+  </p>
+
+  <div class="feeling-card">
+    <p class="label">이런 마음이 드셨다면, 당신도 같은 자리에 있는 거예요</p>
+    <ul class="feeling-list">
+      <li>아이가 독립한 뒤, 하루가 갑자기 비어버린 느낌</li>
+      <li>열심히 살았는데 '내 것'은 없는 것 같은 허전함</li>
+      <li>무언가 시작하고 싶은데 "이 나이에..."라는 말이 먼저 나오는 것</li>
+      <li>나는 누구인가, 라는 질문이 낯설지 않은 요즘</li>
+    </ul>
+  </div>
+
+  <h2 class="section-heading">투명해진다는 것의 의미</h2>
+
+  <p class="body-text">
+    50 이후의 투명함은 <span class="em-text">존재가 사라지는 것이 아니라, 역할이 사라지는 것</span>입니다. 우리는 오랫동안 '엄마'로, '아내'로, '며느리'로 불렸어요. 그 이름이 너무 익숙해서, 정작 내 본래 이름으로 불릴 때 어색한 것은 아닐까요.
+  </p>
+
+  <p class="body-text">
+    역할이라는 옷이 벗겨졌을 때, 그 아래에 있는 '나'를 발견하는 것 — 그것이 지금 우리에게 주어진 가장 중요한 과제가 아닐까 생각합니다.
+  </p>
+
+  <h2 class="section-heading">살아온 시간은 충분히 많습니다</h2>
+
+  <p class="body-text">
+    당신에게는 이미 이야기가 있습니다. 아무도 대신 살아줄 수 없었던, 오직 당신만의 25년, 30년이. 그 이야기를 한 번도 내 언어로 정리해본 적이 없다는 것이 — 아깝지 않으신가요?
+  </p>
+
+  <p class="body-text">
+    투명해지는 것이 두렵다면, 이야기를 꺼내면 됩니다. 누군가의 엄마가 아닌, 내 이름으로 남기는 이야기. 그것이 50 이후의 존재감을 되찾는 가장 조용하고 강한 방법이라고, 저는 믿습니다.
+  </p>
+
+  <div class="cta-box">
+    <p class="cta-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="cta-title">50 이후, 나는 누구로 존재할 것인가 —<br>이 질문을 함께 풀어가고 싶으신 분께</p>
+    <p class="cta-desc">사진 한 장에서 출발해 내 이야기를 정리하고,<br>AI 영상 감독이 30초 자기소개 영상까지 만들어드립니다.</p>
+    <a class="cta-btn" href="https://www.goodadult.co.kr/board/view/38/168">여성의 삶을 노크하다 → 신청하기</a>
+  </div>
+
+  <div class="footer-note">
+    <span class="footer-brand">좋은어른</span>
+    <div class="footer-tags">
+      <span class="tag">#중년여성</span>
+      <span class="tag">#50이후</span>
+      <span class="tag">#디지털자서전</span>
+      <span class="tag">#좋은어른</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

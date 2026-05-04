@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내 이야기를 내 언어로 써본 적 있나요?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  :root {
+    --cream:#FAF7F2; --warm-white:#FFFDF9; --ink:#2C2420; --ink-light:#6B5E58;
+    --ink-muted:#A89990; --blush:#E8C4B8; --blush-light:#F5E6E0;
+    --sage:#B8C9B0; --sage-light:#EDF2EB; --gold:#C9A96E; --gold-light:#F5EDD8;
+    --border:#E8E0D8; --lavender:#D4CAE8; --lavender-light:#F0EDF8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);line-height:1.9; font-weight: 400; font-weight:400;}
+  .wrap{max-width:680px;margin:0 auto;padding:60px 24px 100px;}
+  .brand-bar{display:flex;align-items:center;gap:10px;margin-bottom:56px;}
+  .brand-dot{width:9px; height:9px;border-radius:50%;background:var(--gold);}
+  .brand-name{font-family:'Noto Serif KR',serif;font-size:13px;letter-spacing:.12em; font-weight: 500;color: var(--ink);}
+  .brand-bar-line{flex:1;height:1px;background:var(--border);}
+  .day-tag{font-size:11px;letter-spacing:.1em;color: var(--ink-light); font-weight: 500;}
+  .hero{margin-bottom:48px;}
+  .category-chip{display:inline-block;font-size: 12px;letter-spacing:.1em;color:#8B7BAE;border:1px solid #8B7BAE;padding:4px 12px;border-radius:20px;margin-bottom:20px;font-weight: 500;}
+  .post-title{font-family:'Noto Serif KR',serif;font-size:30px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:20px;word-break:keep-all;}
+  .post-subtitle{font-size:15px;color:var(--ink-light);line-height:1.8;word-break:keep-all;}
+  .deco-line{display:flex;align-items:center;gap:12px;margin:40px 0;}
+  .deco-line::before,.deco-line::after{content:'';flex:1;height:1px;background:var(--border);}
+  .deco-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+  .body-text{font-size:15.5px;line-height:2.0;color:var(--ink);margin-bottom:28px;font-weight: 400; word-break:keep-all;}
+  .body-text.lead{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);font-weight:400;}
+  .quote-block{background:var(--lavender-light);border-left:3px solid var(--lavender);padding:24px 28px;margin:36px 0;border-radius:0 8px 8px 0;}
+  .quote-block p{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink);line-height:1.9; font-weight:400;font-weight:400;word-break:keep-all;}
+  .section-heading{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--ink);margin:44px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--ink);word-break:keep-all;}
+  .em-text{background:linear-gradient(transparent 60%,var(--lavender) 60%);font-weight:500;}
+
+  /* 워크북 미리보기 */
+  .workbook-preview {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 36px 0;
+  }
+  .wb-header {
+    background: var(--lavender-light);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .wb-dot { width:10px; height:10px; border-radius:50%; }
+  .wb-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-light);
+    letter-spacing: .06em;
+  }
+  .wb-body { padding: 28px 28px; }
+  .wb-question {
+    font-size: 13px;
+    color: var(--ink-muted);
+    letter-spacing: .04em;
+    margin-bottom: 8px;
+  }
+  .wb-answer {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.8;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed var(--border);
+    word-break: keep-all;
+  }
+  .wb-answer:last-child { border:none; margin:0; padding:0; }
+
+  /* 세 가지 이유 */
+  .reason-list { margin: 36px 0; }
+  .reason-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .reason-item:last-child { border: none; }
+  .reason-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+  .reason-content {}
+  .reason-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .reason-desc {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  .cta-box{background:var(--ink);border-radius:16px;padding:36px 32px;margin-top:56px;text-align:center;}
+  .cta-eyebrow{font-size:11px;letter-spacing:.15em;color:var(--gold);margin-bottom:14px;}
+  .cta-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--warm-white);line-height:1.6;margin-bottom:16px;word-break:keep-all;}
+  .cta-desc{font-size:13.5px;color:var(--ink-muted);line-height:1.8;margin-bottom:24px;word-break:keep-all;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.08em;padding:13px 32px;border-radius:30px;text-decoration:none;}
+  .footer-note{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .footer-brand{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--ink-muted);letter-spacing:.08em;}
+  .footer-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{font-size:11px;color:var(--ink-muted);background:var(--sage-light);padding:3px 10px;border-radius:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-bar">
+    <div class="brand-dot"></div>
+    <span class="brand-name">좋은어른 · 디지털 자서전 클래스</span>
+    <div class="brand-bar-line"></div>
+    <span class="day-tag">DAY 3</span>
+  </div>
+
+  <div class="hero">
+    <span class="category-chip">워크북 이야기</span>
+    <h1 class="post-title">내 이야기를 내 언어로 써본 적 있나요? —<br>워크북이 열어준 것</h1>
+    <p class="post-subtitle">잘 쓰는 글이 아니어도 됩니다. 내 언어로 쓴 한 문장이면 충분합니다</p>
+  </div>
+
+  <div class="deco-line"><div class="deco-diamond"></div></div>
+
+  <p class="body-text lead">저는 일기를 20년 넘게 썼습니다.<br>그런데 그게 '내 이야기'인지는 몰랐어요.</p>
+
+  <p class="body-text">일기는 그날그날의 감정을 쏟아내는 곳이었고, 다시 읽으면 부끄러운 것들이 더 많았어요. "이 정도가 내 글쓰기구나" 싶어서 오히려 자신감이 없어졌던 것 같습니다.</p>
+
+  <p class="body-text">그런데 워크북은 달랐습니다. 일기처럼 막막하게 쓰는 것이 아니라, 질문에 답하는 형식이었거든요.</p>
+
+  <div class="workbook-preview">
+    <div class="wb-header">
+      <div class="wb-dot" style="background:#C9A96E"></div>
+      <div class="wb-dot" style="background:#B8C9B0"></div>
+      <div class="wb-dot" style="background:#E8C4B8"></div>
+      <span class="wb-title">디지털 자서전 워크북 — 미리보기</span>
+    </div>
+    <div class="wb-body">
+      <p class="wb-question">Q. 당신의 삶에서 가장 용감했던 순간은 언제인가요?</p>
+      <p class="wb-answer">결혼하고 아이를 낳기로 결심했을 때. 무서웠지만, 그게 내가 원하는 삶이라고 믿었으니까.</p>
+      <p class="wb-question">Q. 지금의 당신을 만든 가장 작은 선택은 무엇이었나요?</p>
+      <p class="wb-answer">교직을 그만두고 아이 곁에 있기로 한 것. 그때는 희생이라고 생각했는데, 지금은 선물이었다고 생각해요.</p>
+      <p class="wb-question">Q. 50 이후의 나에게 하고 싶은 말이 있다면?</p>
+      <p class="wb-answer">이제는 네 차례야. 충분히 잘했어.</p>
+    </div>
+  </div>
+
+  <p class="body-text">이 세 질문에 답하는 데 20분이 걸렸습니다. 그런데 그 20분이 — 20년의 일기보다 더 나를 보여주는 것 같았어요.</p>
+
+  <h2 class="section-heading">워크북이 다른 이유 세 가지</h2>
+
+  <div class="reason-list">
+    <div class="reason-item">
+      <span class="reason-num">01</span>
+      <div class="reason-content">
+        <p class="reason-title">막막하지 않습니다</p>
+        <p class="reason-desc">빈 종이 앞에서 무엇을 써야 할지 몰라 멈추는 분들을 위해, 워크북은 질문이 먼저 옵니다. 질문에 솔직하게 답하다 보면 어느새 이야기가 완성됩니다.</p>
+      </div>
+    </div>
+    <div class="reason-item">
+      <span class="reason-num">02</span>
+      <div class="reason-content">
+        <p class="reason-title">잘 쓸 필요가 없습니다</p>
+        <p class="reason-desc">문장이 짧아도, 어법이 틀려도 괜찮습니다. 중요한 것은 그 문장이 진짜 내 말이라는 것. AI 영상 감독이 그 진심을 가장 잘 전달되는 형태로 다듬어줍니다.</p>
+      </div>
+    </div>
+    <div class="reason-item">
+      <span class="reason-num">03</span>
+      <div class="reason-content">
+        <p class="reason-title">이야기가 남습니다</p>
+        <p class="reason-desc">워크북을 완성하고 나면, 그것이 그대로 30초 영상의 대본이 됩니다. 내가 쓴 글이 영상으로 완성되는 경험 — 그 뿌듯함은 해보지 않으면 모릅니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p>잘 쓰는 글이 아니어도 괜찮습니다.<br>내 언어로 쓴 한 문장이면 충분합니다.<br>그 한 문장이 당신의 이야기를 시작합니다.</p>
+  </div>
+
+  <div class="cta-box">
+    <p class="cta-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="cta-title">내 이야기를 처음으로 정리해보는 수업,<br>함께 시작해볼까요</p>
+    <p class="cta-desc">워크북 한 권이면 충분합니다.<br>나머지는 AI 영상 감독이 함께 합니다.</p>
+    <a class="cta-btn" href="https://www.goodadult.co.kr/board/view/38/168">여성의 삶을 노크하다 → 신청하기</a>
+  </div>
+
+  <div class="footer-note">
+    <span class="footer-brand">좋은어른</span>
+    <div class="footer-tags">
+      <span class="tag">#워크북</span>
+      <span class="tag">#글쓰기</span>
+      <span class="tag">#디지털자서전</span>
+      <span class="tag">#좋은어른</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

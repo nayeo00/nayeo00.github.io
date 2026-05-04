@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>딸아이에게 30초짜리 엄마를 선물했습니다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  :root {
+    --cream:#FAF7F2; --warm-white:#FFFDF9; --ink:#2C2420; --ink-light:#6B5E58;
+    --ink-muted:#A89990; --blush:#E8C4B8; --blush-light:#F5E6E0;
+    --sage:#B8C9B0; --sage-light:#EDF2EB; --gold:#C9A96E; --gold-light:#F5EDD8;
+    --border:#E8E0D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);line-height:1.9; font-weight: 400; font-weight:400;}
+  .wrap{max-width:680px;margin:0 auto;padding:60px 24px 100px;}
+  .brand-bar{display:flex;align-items:center;gap:10px;margin-bottom:56px;}
+  .brand-dot{width:9px; height:9px;border-radius:50%;background:var(--gold);}
+  .brand-name{font-family:'Noto Serif KR',serif;font-size:13px;letter-spacing:.12em; font-weight: 500;color: var(--ink);}
+  .brand-bar-line{flex:1;height:1px;background:var(--border);}
+  .day-tag{font-size:11px;letter-spacing:.1em;color: var(--ink-light); font-weight: 500;}
+  .hero{margin-bottom:48px;}
+  .category-chip{display:inline-block;font-size: 12px;letter-spacing:.1em;color:#C47A8A;border:1px solid #C47A8A;padding:4px 12px;border-radius:20px;margin-bottom:20px;font-weight: 500;}
+  .post-title{font-family:'Noto Serif KR',serif;font-size:30px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:20px;word-break:keep-all;}
+  .post-subtitle{font-size:15px;color:var(--ink-light);line-height:1.8;word-break:keep-all;}
+  .deco-line{display:flex;align-items:center;gap:12px;margin:40px 0;}
+  .deco-line::before,.deco-line::after{content:'';flex:1;height:1px;background:var(--border);}
+  .deco-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+  .body-text{font-size:15.5px;line-height:2.0;color:var(--ink);margin-bottom:28px;font-weight: 400; word-break:keep-all;}
+  .body-text.lead{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);font-weight:400;}
+  .section-heading{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--ink);margin:44px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--ink);word-break:keep-all;}
+  .em-text{background:linear-gradient(transparent 60%,var(--blush) 60%);font-weight:500;}
+
+  /* 카톡 말풍선 스타일 */
+  .chat-wrap {
+    background: #E5DDD5;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin: 36px 0;
+  }
+  .chat-label {
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: #8B7B70;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .chat-row {
+    display: flex;
+    margin-bottom: 12px;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .chat-row.me { justify-content: flex-end; }
+  .chat-row.her { justify-content: flex-start; }
+  .bubble {
+    max-width: 72%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .me .bubble { background: #DCF8C6; color: #2C2420; border-bottom-right-radius: 4px; }
+  .her .bubble { background: #fff; color: #2C2420; border-bottom-left-radius: 4px; }
+  .chat-time { font-size: 11px; color: #8B7B70; }
+
+  /* 감동 인용 */
+  .big-quote {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .big-quote-mark {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 60px;
+    color: var(--blush);
+    line-height: .8;
+    margin-bottom: 12px;
+  }
+  .big-quote-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .big-quote-source {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 14px;
+  }
+
+  .quote-block{background:var(--blush-light);border-left:3px solid var(--blush);padding:24px 28px;margin:36px 0;border-radius:0 8px 8px 0;}
+  .quote-block p{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink);line-height:1.9; font-weight:400;font-weight:400;word-break:keep-all;}
+
+  .cta-box{background:var(--ink);border-radius:16px;padding:36px 32px;margin-top:56px;text-align:center;}
+  .cta-eyebrow{font-size:11px;letter-spacing:.15em;color:var(--gold);margin-bottom:14px;}
+  .cta-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--warm-white);line-height:1.6;margin-bottom:16px;word-break:keep-all;}
+  .cta-desc{font-size:13.5px;color:var(--ink-muted);line-height:1.8;margin-bottom:24px;word-break:keep-all;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.08em;padding:13px 32px;border-radius:30px;text-decoration:none;}
+  .footer-note{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .footer-brand{font-family:'Noto Serif KR',serif;font-size:12px;color:var(--ink-muted);letter-spacing:.08em;}
+  .footer-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{font-size:11px;color:var(--ink-muted);background:var(--sage-light);padding:3px 10px;border-radius:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand-bar">
+    <div class="brand-dot"></div>
+    <span class="brand-name">좋은어른 · 디지털 자서전 클래스</span>
+    <div class="brand-bar-line"></div>
+    <span class="day-tag">DAY 5</span>
+  </div>
+
+  <div class="hero">
+    <span class="category-chip">감동 스토리</span>
+    <h1 class="post-title">딸아이에게 30초짜리 엄마를 선물했습니다</h1>
+    <p class="post-subtitle">엄마의 30초가 자녀에게는 평생의 선물이 됩니다</p>
+  </div>
+
+  <div class="deco-line"><div class="deco-diamond"></div></div>
+
+  <p class="body-text lead">수업 마지막 날, AI 영상 감독이 만들어준 30초 영상을 처음 봤을 때 — 저는 그 자리에서 한참을 아무 말도 못 했습니다.</p>
+
+  <p class="body-text">화면 속의 나는 어색하지 않았어요. 꾸민 것도 아니고, 배우처럼 말하는 것도 아닌데 — 그냥 나였습니다. 52년을 살아온 내 얼굴과 목소리로, 내 이야기를 하고 있는 나. 처음으로 내가 주인공인 영상이 생겼습니다.</p>
+
+  <p class="body-text">그 영상을 딸아이에게 보냈어요. 아무 말 없이, 그냥 카톡으로 툭.</p>
+
+  <div class="chat-wrap">
+    <p class="chat-label">그날 저녁 카톡</p>
+    <div class="chat-row me">
+      <div class="bubble">🎬 [영상 파일 전송]</div>
+      <span class="chat-time">오후 8:43</span>
+    </div>
+    <div class="chat-row me">
+      <div class="bubble">엄마가 수업에서 만든 거야. 봐봐.</div>
+      <span class="chat-time">오후 8:43</span>
+    </div>
+    <div class="chat-row her">
+      <span class="chat-time">오후 8:51</span>
+      <div class="bubble">엄마... 나 이거 보고 울었잖아 😭<br>엄마 이런 생각하고 살았던 거 몰랐어.</div>
+    </div>
+    <div class="chat-row her">
+      <span class="chat-time">오후 8:52</span>
+      <div class="bubble">나 이거 평생 보관할게.</div>
+    </div>
+    <div class="chat-row me">
+      <div class="bubble">엄마도 울고 있어 😊</div>
+      <span class="chat-time">오후 8:53</span>
+    </div>
+  </div>
+
+  <div class="big-quote">
+    <div class="big-quote-mark">"</div>
+    <p class="big-quote-text">나 이거 평생 보관할게.</p>
+    <p class="big-quote-source">— 딸아이의 카톡 메시지</p>
+  </div>
+
+  <h2 class="section-heading">25년 동안 가족 사진만 찍었습니다</h2>
+
+  <p class="body-text">생각해보면, 저는 늘 찍는 사람이었어요. 아이의 첫걸음마, 남편의 승진 기념일, 가족 여행의 풍경 — 셔터를 누르는 건 항상 저였고, 그 사진 속에 저는 없었습니다.</p>
+
+  <p class="body-text"><span class="em-text">30초짜리 영상 한 편이, 25년의 그 공백을 채워주었습니다.</span> 처음으로 내가 주인공인 기록. 내 목소리로, 내 말로, 내 이야기를 담은 것.</p>
+
+  <div class="quote-block">
+    <p>자녀가 엄마를 기억하는 것은 요리 솜씨나 희생이 아닐 수 있어요.<br>"엄마는 어떤 사람이었는가"를 말해주는 30초가 — 가장 오래 남는 유산이 됩니다.</p>
+  </div>
+
+  <h2 class="section-heading">30초면 충분합니다</h2>
+
+  <p class="body-text">긴 영상이 아니어도 됩니다. 잘 만든 영상이 아니어도 됩니다. 단 30초 동안 내가 어떤 사람인지, 어떻게 살아왔는지, 무엇을 사랑하는지 — 그것만으로 딸에게는, 아들에게는, 손자에게는 평생의 기억이 됩니다.</p>
+
+  <p class="body-text">그 30초를 선물하는 것이 디지털 자서전 클래스입니다.</p>
+
+  <div class="cta-box">
+    <p class="cta-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="cta-title">엄마의 30초가<br>자녀에게는 평생의 선물이 됩니다</p>
+    <p class="cta-desc">사진 한 장 → 워크북 → 30초 영상.<br>AI 영상 감독이 처음부터 끝까지 함께합니다.</p>
+    <a class="cta-btn" href="https://www.goodadult.co.kr/board/view/38/168">여성의 삶을 노크하다 → 신청하기</a>
+  </div>
+
+  <div class="footer-note">
+    <span class="footer-brand">좋은어른</span>
+    <div class="footer-tags">
+      <span class="tag">#30초영상</span>
+      <span class="tag">#디지털자서전</span>
+      <span class="tag">#엄마이야기</span>
+      <span class="tag">#좋은어른</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 구조 · 수업 흐름 · 콘텐츠 전략</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+:root {
+  --cream:#FAF7F2; --warm-white:#FFFDF9; --ink:#2C2420; --ink-light:#6B5E58;
+  --ink-muted:#A89990; --blush:#E8C4B8; --blush-light:#F5E6E0;
+  --sage:#B8C9B0; --sage-light:#EDF2EB; --gold:#C9A96E; --gold-light:#F5EDD8;
+  --border:#E8E0D8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Noto Sans KR',sans-serif;color:var(--ink);font-weight:400;line-height:1.8;}
+.wrap{max-width:680px;margin:0 auto;padding:52px 24px 80px;}
+
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-light);text-decoration:none;margin-bottom:40px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:var(--warm-white);}
+.back-btn:hover{border-color:var(--gold);color:var(--ink);}
+
+.page-badge{display:inline-block;background:var(--gold-light);border:1px solid var(--gold);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--ink-light);margin-bottom:16px;}
+.page-title{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:8px;word-break:keep-all;}
+.page-sub{font-size:14px;color:var(--ink-light);font-weight:400;margin-bottom:40px;word-break:keep-all;}
+
+.sec-divider{display:flex;align-items:center;gap:10px;margin:40px 0 20px;}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-divider span{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-muted);}
+
+.card{background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:24px 24px;margin-bottom:14px;}
+.card-label{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-muted);margin-bottom:12px;}
+
+/* 브랜드 흐름 */
+.flow-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);}
+.flow-item:last-child{border:none;padding-bottom:0;}
+.flow-num{width:28px;height:28px;border-radius:50%;background:var(--gold-light);border:1px solid var(--gold);color:#8B6A30;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.flow-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.flow-desc{font-size:13px;color:var(--ink-light);line-height:1.6;word-break:keep-all;}
+
+/* 수업 3단계 */
+.step-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border);}
+.step-item:last-child{border:none;}
+.step-num{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:400;color:var(--gold);line-height:1;flex-shrink:0;width:36px;}
+.step-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.step-desc{font-size:13px;color:var(--ink-light);line-height:1.6;word-break:keep-all;}
+
+/* 콘텐츠 플랜 표 */
+.content-table{width:100%;border-collapse:collapse;font-size:13px;}
+.content-table th{background:var(--cream);padding:9px 12px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--ink-muted);border-bottom:1px solid var(--border);}
+.content-table td{padding:12px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.content-table tr:last-child td{border:none;}
+.day-badge{display:inline-block;background:var(--gold-light);color:#8B6A30;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;}
+.chip{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:8px;margin-top:2px;}
+.chip-g{background:var(--gold-light);color:#8B6A30;}
+.chip-s{background:var(--sage-light);color:#4A6A40;}
+.chip-b{background:var(--blush-light);color:#8A4A3A;}
+td .post-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.45;word-break:keep-all;}
+
+/* CTA 가이드 */
+.cta-guide{background:var(--ink);border-radius:14px;padding:22px 22px;color:var(--warm-white);}
+.cta-guide-label{font-size:11px;letter-spacing:.12em;color:var(--gold);font-weight:500;margin-bottom:10px;}
+.cta-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);align-items:flex-start;}
+.cta-row:last-child{border:none;}
+.cta-mark{font-size:13px;flex-shrink:0;margin-top:1px;}
+.cta-text{font-size:13px;color:rgba(255,255,255,.8);line-height:1.6;word-break:keep-all;}
+
+/* 핵심 가치 */
+.value-box{background:var(--gold-light);border:1px solid var(--gold);border-radius:12px;padding:20px 22px;}
+.value-text{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:var(--ink);line-height:1.8;word-break:keep-all;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-btn" href="index.html">← 목록으로</a>
+
+  <div class="page-badge">STRATEGY</div>
+  <h1 class="page-title">브랜드 구조 · 수업 흐름 · 콘텐츠 전략</h1>
+  <p class="page-sub">좋은어른 디지털 자서전 클래스 — AI스토리랩 콘텐츠 기획안</p>
+
+  <!-- 브랜드 구조 -->
+  <div class="sec-divider"><span>브랜드 구조</span></div>
+  <div class="card">
+    <p class="card-label">4개 레이어 연결 구조</p>
+    <div class="flow-item">
+      <div class="flow-num">①</div>
+      <div>
+        <p class="flow-title">좋은어른</p>
+        <p class="flow-desc">브랜드 주체. "50 이후 나는 누구로 존재할 것인가"라는 질문을 안고 사는 중장년 여성을 위한 플랫폼</p>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">②</div>
+      <div>
+        <p class="flow-title">디지털 자서전 클래스</p>
+        <p class="flow-desc">수업 이름. 사진 한 장 → 워크북으로 이야기 정리 → AI 영상 감독이 30초 자기소개 영상 제작</p>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">③</div>
+      <div>
+        <p class="flow-title">여성의 삶을 노크하다</p>
+        <p class="flow-desc">수업 서브 타이틀 겸 신청 CTA 관문. 모든 콘텐츠의 마지막이 여기로 향한다</p>
+      </div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">④</div>
+      <div>
+        <p class="flow-title">AI스토리랩</p>
+        <p class="flow-desc">수업 안에서 AI 영상 전문 감독으로 참여. 워크북 글을 바탕으로 30초 자기소개 영상을 제작해줌</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수업 3단계 -->
+  <div class="sec-divider"><span>수업 3단계 흐름</span></div>
+  <div class="card">
+    <div class="step-item">
+      <span class="step-num">01</span>
+      <div>
+        <p class="step-title">사진 한 장에서 출발</p>
+        <p class="step-desc">내 삶에서 가장 의미 있는 사진 한 장을 고르고, 그 순간의 감정과 기억을 언어로 풀어낸다</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">02</span>
+      <div>
+        <p class="step-title">워크북으로 이야기 정리</p>
+        <p class="step-desc">살아온 시간의 흐름을 나만의 언어로 기록. 흩어진 기억을 하나의 서사로 엮는 과정</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">03</span>
+      <div>
+        <p class="step-title">30초 자기소개 영상 완성</p>
+        <p class="step-desc">AI스토리랩 영상 감독이 워크북 글을 바탕으로 나만의 30초 영상을 제작해준다</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1주일 콘텐츠 플랜 -->
+  <div class="sec-divider"><span>1주일 블로그 콘텐츠 플랜</span></div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th style="width:56px;">Day</th>
+          <th>포스팅 제목</th>
+          <th style="width:72px;">분류</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="day-badge">D1</span></td><td><p class="post-t">"50이 넘으면 점점 투명해지는 느낌, 저만 그런가요?"</p></td><td><span class="chip chip-g">공감</span></td></tr>
+        <tr><td><span class="day-badge">D2</span></td><td><p class="post-t">사진 한 장이 이야기가 되는 순간</p></td><td><span class="chip chip-s">체험</span></td></tr>
+        <tr><td><span class="day-badge">D3</span></td><td><p class="post-t">내 이야기를 내 언어로 써본 적 있나요?</p></td><td><span class="chip chip-b">워크북</span></td></tr>
+        <tr><td><span class="day-badge">D4</span></td><td><p class="post-t">52살에 처음으로 카메라 앞에 섰습니다</p></td><td><span class="chip chip-g">용기</span></td></tr>
+        <tr><td><span class="day-badge">D5</span></td><td><p class="post-t">딸아이에게 30초짜리 엄마를 선물했습니다</p></td><td><span class="chip chip-b">감동</span></td></tr>
+        <tr><td><span class="day-badge">D6</span></td><td><p class="post-t">이건 기술 수업이 아닙니다</p></td><td><span class="chip chip-s">정의</span></td></tr>
+        <tr><td><span class="day-badge">D7</span></td><td><p class="post-t">50 이후 처음으로 내 이름이 붙은 무언가를 가졌습니다</p></td><td><span class="chip chip-g">마무리</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA 톤 가이드 -->
+  <div class="sec-divider"><span>CTA 톤 가이드</span></div>
+  <div class="cta-guide">
+    <p class="cta-guide-label">모든 포스팅 마무리 원칙</p>
+    <div class="cta-row"><span class="cta-mark">✗</span><span class="cta-text">"지금 바로 신청하세요!" — 너무 강하고 밀어붙이는 느낌</span></div>
+    <div class="cta-row"><span class="cta-mark">✓</span><span class="cta-text">"준비가 되셨다면, 문을 노크해보세요 →" — 초대형 어투, 손 내밀기</span></div>
+    <div class="cta-row"><span class="cta-mark">✓</span><span class="cta-text">매 포스팅마다 다른 표현으로 자연스럽게 '여성의 삶을 노크하다' 언급</span></div>
+    <div class="cta-row"><span class="cta-mark">✓</span><span class="cta-text">기술·AI 용어 최소화. 이야기·존재·언어·삶 키워드 중심</span></div>
+  </div>
+
+  <!-- 핵심 가치 문장 -->
+  <div class="sec-divider"><span>핵심 가치 문장</span></div>
+  <div class="value-box">
+    <p class="value-text">"살아온 시간은 충분히 많은데, 내 이야기를 내 언어로 정리해본 적 있나요?"<br>— 이 질문에 "아니요"라고 답하는 모든 여성이 우리의 독자입니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

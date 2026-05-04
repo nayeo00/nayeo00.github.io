@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>좋은어른 · 디지털 자서전 클래스 — 수업 제출 포트폴리오</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+  --cream: #FAF7F2;
+  --warm-white: #FFFDF9;
+  --ink: #2C2420;
+  --ink-light: #6B5E58;
+  --ink-muted: #A89990;
+  --blush: #E8C4B8;
+  --blush-light: #F5E6E0;
+  --sage: #B8C9B0;
+  --sage-light: #EDF2EB;
+  --gold: #C9A96E;
+  --gold-light: #F5EDD8;
+  --border: #E8E0D8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--cream);
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--ink);
+  font-weight: 500;
+  min-height: 100vh;
+}
+
+/* 배경 장식 */
+body::before {
+  content: '';
+  position: fixed;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,201,176,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeUp .6s ease both;
+}
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-light);
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.header-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.header-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 10px;
+  word-break: keep-all;
+}
+.header-sub {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.8;
+  font-weight: 500;
+  word-break: keep-all;
+}
+
+/* 구분선 */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 28px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.divider-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--ink);
+}
+
+/* 섹션 타이틀 */
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--ink);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* 메인 CTA 카드 */
+.main-card {
+  background: var(--ink);
+  border-radius: 20px;
+  padding: 32px 28px;
+  margin-bottom: 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp .6s .1s ease both;
+  text-decoration: none;
+  display: block;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.main-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(44,36,32,.18);
+}
+.main-card::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(201,169,110,.1);
+}
+.main-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(201,169,110,.07);
+}
+.main-card-eyebrow {
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 10px;
+  position: relative; z-index: 1;
+}
+.main-card-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--warm-white);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  word-break: keep-all;
+  position: relative; z-index: 1;
+}
+.main-card-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  word-break: keep-all;
+  position: relative; z-index: 1;
+}
+.main-card-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 11px 28px;
+  border-radius: 30px;
+  position: relative; z-index: 1;
+}
+
+/* 전략 카드 (페르소나·전략) */
+.strategy-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.strategy-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(44,36,32,.08);
+}
+.strategy-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.strategy-icon.gold { background: var(--gold-light); }
+.strategy-icon.sage { background: var(--sage-light); }
+.strategy-icon.blush { background: var(--blush-light); }
+.strategy-body { flex: 1; min-width: 0; }
+.strategy-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.strategy-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.strategy-arrow {
+  font-size: 16px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* 블로그 포스팅 카드 */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.post-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.post-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(44,36,32,.08);
+}
+.post-day {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.post-day-num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.post-day-label {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .05em;
+}
+.post-body { flex: 1; min-width: 0; }
+.post-chip {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+.chip-gold { background: var(--gold-light); color: #8B6A30; }
+.chip-sage { background: var(--sage-light); color: #4A6A40; }
+.chip-blush { background: var(--blush-light); color: #8A4A3A; }
+.post-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post-arrow {
+  font-size: 14px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* 푸터 */
+.footer {
+  margin-top: 52px;
+  text-align: center;
+  animation: fadeUp .6s .5s ease both;
+}
+.footer-deco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.footer-deco-line { width: 40px; height: 1px; background: var(--border); }
+.footer-deco-diamond {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.footer-brand {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+.footer-note {
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.post-card:nth-child(1) { animation: fadeUp .5s .15s ease both; }
+.post-card:nth-child(2) { animation: fadeUp .5s .20s ease both; }
+.post-card:nth-child(3) { animation: fadeUp .5s .25s ease both; }
+.post-card:nth-child(4) { animation: fadeUp .5s .30s ease both; }
+.post-card:nth-child(5) { animation: fadeUp .5s .35s ease both; }
+.post-card:nth-child(6) { animation: fadeUp .5s .40s ease both; }
+.post-card:nth-child(7) { animation: fadeUp .5s .45s ease both; }
+.strategy-card:nth-child(1) { animation: fadeUp .5s .10s ease both; }
+.strategy-card:nth-child(2) { animation: fadeUp .5s .15s ease both; }
+.strategy-card:nth-child(3) { animation: fadeUp .5s .20s ease both; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-badge">
+      <div class="header-badge-dot"></div>
+      수업 제출 포트폴리오
+    </div>
+    <h1 class="header-title">좋은어른<br>디지털 자서전 클래스</h1>
+    <p class="header-sub">여성의 삶을 노크하다 —<br>AI스토리랩 콘텐츠 전략 + 7일 블로그 포스팅</p>
+  </div>
+
+  <!-- 수업 신청 메인 CTA -->
+  <a class="main-card" href="https://www.goodadult.co.kr/board/view/38/168" target="_blank">
+    <p class="main-card-eyebrow">좋은어른 · 디지털 자서전 클래스</p>
+    <p class="main-card-title">여성의 삶을 노크하다</p>
+    <p class="main-card-desc">사진 한 장 → 워크북 → AI 영상 감독의<br>30초 자기소개 영상까지</p>
+    <span class="main-card-btn">수업 신청하기 →</span>
+  </a>
+
+  <!-- 전략 문서 -->
+  <div class="divider"><span class="divider-label">전략 문서</span></div>
+
+  <div class="section-title">콘텐츠 전략 · 페르소나</div>
+
+  <a class="strategy-card" href="goodadult_strategy.html" target="_blank">
+    <div class="strategy-icon gold">🗺</div>
+    <div class="strategy-body">
+      <p class="strategy-label">STRATEGY</p>
+      <p class="strategy-title">브랜드 구조 · 수업 흐름 · 1주일 콘텐츠 플랜</p>
+    </div>
+    <span class="strategy-arrow">›</span>
+  </a>
+
+  <a class="strategy-card" href="goodadult_persona.html" target="_blank">
+    <div class="strategy-icon sage">👤</div>
+    <div class="strategy-body">
+      <p class="strategy-label">PERSONA</p>
+      <p class="strategy-title">이정은 (52세) — 타깃 페르소나 상세 문서</p>
+    </div>
+    <span class="strategy-arrow">›</span>
+  </a>
+
+  <a class="strategy-card" href="goodadult_workbook.html" target="_blank">
+    <div class="strategy-icon blush">📋</div>
+    <div class="strategy-body">
+      <p class="strategy-label">WORKSHEET</p>
+      <p class="strategy-title">3단계 콘텐츠 워크북 — 핵심 주제 · 하위 주제 · 세부 포인트</p>
+    </div>
+    <span class="strategy-arrow">›</span>
+  </a>
+
+  <!-- 블로그 포스팅 -->
+  <div class="divider"><span class="divider-label">블로그 포스팅 7일</span></div>
+
+  <div class="section-title">티스토리 자동발행 콘텐츠</div>
+
+  <div class="post-list">
+    <a class="post-card" href="day001.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">1</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-gold">번아웃 탈출기</span>
+        <p class="post-title">"50이 넘으면 점점 투명해지는 느낌, 저만 그런가요?"</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day002.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">2</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-sage">사진 한 장</span>
+        <p class="post-title">사진 한 장이 이야기가 되는 순간</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day003.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">3</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-blush">워크북 이야기</span>
+        <p class="post-title">내 이야기를 내 언어로 써본 적 있나요?</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day004.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">4</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-gold">용기 이야기</span>
+        <p class="post-title">52살에 처음으로 카메라 앞에 섰습니다</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day005.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">5</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-blush">감동 스토리</span>
+        <p class="post-title">딸아이에게 30초짜리 엄마를 선물했습니다</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day006.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">6</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-sage">수업 이야기</span>
+        <p class="post-title">이건 기술 수업이 아닙니다</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+
+    <a class="post-card" href="day007.html" target="_blank">
+      <div class="post-day">
+        <span class="post-day-num">7</span>
+        <span class="post-day-label">DAY</span>
+      </div>
+      <div class="post-body">
+        <span class="post-chip chip-gold">마지막 이야기</span>
+        <p class="post-title">50 이후 처음으로 내 이름이 붙은 무언가를 가졌습니다</p>
+      </div>
+      <span class="post-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- 푸터 -->
+  <div class="footer">
+    <div class="footer-deco">
+      <div class="footer-deco-line"></div>
+      <div class="footer-deco-diamond"></div>
+      <div class="footer-deco-line"></div>
+    </div>
+    <p class="footer-brand">좋은어른 · AI스토리랩</p>
+    <p class="footer-note">디지털 자서전 클래스 수업 제출 포트폴리오</p>
+  </div>
+
+</div>
+</body>
+</html>
