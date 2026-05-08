@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>X 스레드 — 나다움이 절반만 맞다는 이야기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--bg:#FFF7F2; --primary:#842318; --secondary:#6A4C93; --text:#202020; --accent:#EAD6E7; --muted:#7a6b66}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font-family:'Pretendard',sans-serif; background:var(--bg); color:var(--text); padding:48px 24px; line-height:1.7}
+  .container{max-width:600px; margin:0 auto}
+  .header{border-bottom:1px solid var(--primary); padding-bottom:24px; margin-bottom:48px}
+  .eyebrow{color:var(--primary); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px}
+  h1{font-size:24px; font-weight:700; margin-bottom:8px}
+  .meta{color:var(--muted); font-size:14px}
+  .thread{position:relative; padding-left:32px}
+  .thread::before{content:''; position:absolute; left:11px; top:24px; bottom:24px; width:2px; background:var(--accent)}
+  .tweet{position:relative; background:#fff; border-radius:16px; padding:20px 24px; margin-bottom:16px; box-shadow:0 2px 12px rgba(132,35,24,0.05)}
+  .tweet::before{content:''; position:absolute; left:-32px; top:24px; width:24px; height:24px; border-radius:50%; background:var(--primary); border:4px solid var(--bg)}
+  .tweet.cta::before{background:var(--secondary)}
+  .tweet.main::before{background:var(--primary); width:32px; height:32px; left:-36px; top:20px}
+  .tweet-num{font-size:11px; color:var(--secondary); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px}
+  .tweet.main .tweet-num{color:var(--primary)}
+  .tweet p{font-size:16px; line-height:1.7; margin-bottom:8px}
+  .tweet p:last-child{margin-bottom:0}
+  .tweet.main p{font-size:18px}
+  .tweet.cta{background:var(--accent)}
+  em{color:var(--primary); font-style:italic; font-weight:500}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="eyebrow">X (Twitter) · Thread · 7 tweets</div>
+    <h1>나다움이 절반만 맞다는 이야기</h1>
+    <div class="meta">B2C · 단문 7개 (메인 + 5 + CTA) · 발행 우선순위 3순위</div>
+  </div>
+
+  <div class="thread">
+    <div class="tweet main">
+      <div class="tweet-num">Main · 0/6</div>
+      <p>나다움이 절반만 맞다는 이야기를 듣고, 한참 멈췄습니다.</p>
+      <p>하버드가 수십 년 연구한 행복의 가장 큰 조건은, 나다움이 아니라 <em>관계 속의 지지</em>였습니다.</p>
+      <p>자서전 클래스를 <em>그룹</em>으로만 운영하는 이유와 정확히 같은 이야기였어요. 🧵</p>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-num">1 / 6</div>
+      <p>우리는 <em>나다움을 찾아라</em>라는 말을 너무 많이 듣습니다.</p>
+      <p>그런데 나다움만 주장하면 외로워집니다. 외로우면 결국 무너집니다.</p>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-num">2 / 6</div>
+      <p>그래서 필요한 게 <em>타인 사고력</em>.</p>
+      <p>옆 사람이 무엇을 생각하는지 이해하고, 그 위에 내 생각을 다시 얹는 힘.</p>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-num">3 / 6</div>
+      <p>잘되는 콘텐츠는 4가지를 다 갖춥니다.<br>
+      ① 감정적 공감<br>
+      ② 인지적 공감 (가치관 일치)<br>
+      ③ 기대 수준 충족<br>
+      ④ 문제 해결까지</p>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-num">4 / 6</div>
+      <p>콘텐츠를 시작할 때 "내가 손끝이 아팠던 문제"에서 출발하라고 합니다.</p>
+      <p>자서전도 똑같습니다. <em>내가 무너졌다고 생각했던 시간이, 누군가의 답이 됩니다.</em></p>
+    </div>
+
+    <div class="tweet">
+      <div class="tweet-num">5 / 6</div>
+      <p>좋은어른 워크북이 <em>그룹</em>으로만 펼쳐지는 이유.</p>
+      <p>혼자 쓰면 일기가 되고, 같이 쓰면 자서전이 됩니다. 옆 사람의 <em>"나도 그랬어요"</em> 한 마디가 분기점입니다.</p>
+    </div>
+
+    <div class="tweet cta">
+      <div class="tweet-num">CTA · 6 / 6</div>
+      <p>평범한 30년이 가장 깊은 자서전입니다.</p>
+      <p>봄 4주 사진자서전 클래스 — 프로필 링크에 일정 있습니다.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
