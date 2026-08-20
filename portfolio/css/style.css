@@ -12,8 +12,8 @@
 
   /* --- 텍스트 --- */
   --text:#F2EFE7;
-  --text-dim:#98979F;
-  --text-faint:#5E5D66;
+  --text-dim:#ACABB3;
+  --text-faint:#78767F;
 
   /* --- 포인트 컬러 --- */
   --brass:#C9A25A;       /* 브라스 골드 — FILM 01, CHRONOS(CASE 04) */
@@ -26,8 +26,8 @@
   --line:#2B2C33;
 
   /* --- 폰트 --- */
-  --serif: Georgia, 'Times New Roman', 'Noto Serif KR', serif;
-  --sans: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif;
+  /* Pretendard(CDN) 우선, 실패 시 Noto Sans KR → 시스템 고딕체 순서로 대체됩니다 */
+  --sans: 'Pretendard', 'Noto Sans KR', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Roboto, sans-serif;
   --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
 
@@ -87,15 +87,15 @@ img{ max-width:100%; display:block; }
   margin-bottom:22px;
 }
 .hero h1{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(42px, 7vw, 76px);
-  line-height:1.05;
-  letter-spacing:-0.01em;
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(38px, 6.4vw, 68px);
+  line-height:1.12;
+  letter-spacing:-0.02em;
   margin:0 0 26px;
   color:var(--text);
 }
-.hero h1 em{ font-style:italic; color:var(--brass); }
+.hero h1 .accent{ font-weight:400; color:var(--brass); }
 .hero-line{
   font-family:var(--mono);
   font-size:clamp(14px,2vw,17px);
@@ -103,7 +103,7 @@ img{ max-width:100%; display:block; }
   letter-spacing:.01em;
   margin:0 0 28px;
 }
-.hero-desc{ max-width:540px; color:var(--text-dim); font-size:15.5px; margin:0; }
+.hero-desc{ max-width:540px; color:var(--text-dim); font-size:16.5px; line-height:1.7; margin:0; }
 .hero-foot{
   margin-top:64px;
   display:flex;
@@ -130,10 +130,10 @@ img{ max-width:100%; display:block; }
 .film--cool .eyebrow{ color:var(--signal); }
 .eyebrow-sub{ font-family:var(--mono); font-size:11px; color:var(--text-faint); }
 
-.film h2{
+.film h2, .case h2{
   font-family:var(--sans);
-  font-weight:800;
-  font-size:clamp(30px,4.4vw,44px);
+  font-weight:500;
+  font-size:clamp(24px,3.2vw,34px);
   letter-spacing:-0.01em;
   margin:0 0 10px;
   color:var(--text);
@@ -164,14 +164,14 @@ img{ max-width:100%; display:block; }
 .media-frame--horizontal{ width:100%; max-width:640px; aspect-ratio:16/9; }
 
 .film-body{ max-width:600px; margin:34px auto 0; text-align:left; }
-.film-desc{ color:var(--text-dim); font-size:15px; margin:0 0 26px; }
+.film-desc{ color:var(--text-dim); font-size:16px; line-height:1.75; margin:0 0 26px; }
 
 .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
 .tag{
   font-family:var(--mono);
-  font-size:11px;
+  font-size:11.5px;
   letter-spacing:.03em;
-  padding:6px 12px;
+  padding:7px 13px;
   border-radius:999px;
   border:1px solid var(--brass-dim);
   color:var(--brass);
@@ -182,31 +182,73 @@ img{ max-width:100%; display:block; }
 
 /* ================= CASE (CHRONOS) ================= */
 .case{ padding:110px 0 100px; background:var(--bg); }
-.case-intro{ max-width:600px; color:var(--text-dim); font-size:15px; margin:0 0 40px; }
+.case-intro{ max-width:600px; color:var(--text-dim); font-size:16px; line-height:1.75; margin:0 0 40px; }
 
 .gallery{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  gap:3px;
-  background:var(--line);
-  border:1px solid var(--line);
+  gap:18px;
 }
-.gallery figure{ margin:0; position:relative; aspect-ratio:4/3; overflow:hidden; background:#000; }
+.gallery figure{
+  margin:0; position:relative; aspect-ratio:4/3; overflow:hidden;
+  background:#000; border:1px solid var(--line); border-radius:6px;
+  cursor:pointer;
+}
 .gallery img{
   width:100%; height:100%; object-fit:cover; display:block;
   filter:saturate(.96);
   transition:transform .5s ease;
 }
-.gallery figure:hover img{ transform:scale(1.03); }
+.gallery figure:hover img{ transform:scale(1.04); }
 .gallery figcaption{
   position:absolute; left:0; right:0; bottom:0;
   padding:11px 13px 10px;
-  background:linear-gradient(to top, rgba(0,0,0,.72), transparent);
+  background:linear-gradient(to top, rgba(0,0,0,.75), transparent);
   font-family:var(--mono);
-  font-size:11px;
+  font-size:11.5px;
   letter-spacing:.06em;
   color:#EDE7D8;
+  pointer-events:none;
 }
+
+/* --- 라이트박스 (이미지 클릭 시 크게 보기) --- */
+.lightbox{
+  position:fixed; inset:0;
+  background:rgba(9,9,11,.94);
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:36px;
+  z-index:999;
+}
+.lightbox.is-open{ display:flex; }
+.lightbox img{
+  max-width:92vw; max-height:82vh;
+  width:auto; height:auto;
+  object-fit:contain;
+  border:1px solid var(--line);
+}
+.lightbox-caption{
+  margin-top:16px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.08em;
+  color:var(--text-dim);
+}
+.lightbox-close{
+  position:absolute;
+  top:20px; right:22px;
+  width:42px; height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+}
+.lightbox-close:hover{ background:rgba(255,255,255,.12); }
 
 .case-cta{ margin-top:36px; display:flex; flex-wrap:wrap; gap:12px; }
 .btn{
