@@ -160,6 +160,12 @@
         <figure><img src="images/chronos/06-campaign-azure-spark.jpg" alt="CHRONOS 광고 AZURE SPARK"><figcaption>CAMPAIGN</figcaption></figure>
         <figure><img src="images/chronos/07-web-ui.jpg" alt="CHRONOS 웹 UI"><figcaption>WEB</figcaption></figure>
         <figure><img src="images/chronos/08-model.jpg" alt="CHRONOS 모델 컷"><figcaption>CAMPAIGN</figcaption></figure>
+        <!-- CHRONOS 실험 영상: 교체하려면 data-youtube 값과 아래 img src의 영상 ID를 같이 바꿔주세요 -->
+        <figure class="gallery-video" data-youtube="H-DJVH9UftA">
+          <img src="https://img.youtube.com/vi/H-DJVH9UftA/hqdefault.jpg" alt="CHRONOS 브랜드 영상 실험 — AZURE SPARK">
+          <span class="gallery-play" aria-hidden="true"></span>
+          <figcaption>EXPERIMENT</figcaption>
+        </figure>
       </div>
     </div>
     <div class="sprocket sprocket--brass"></div>
@@ -181,10 +187,13 @@
     </div>
   </footer>
 
-  <!-- 이미지 클릭 시 크게 보여주는 라이트박스 -->
+  <!-- 이미지/영상 클릭 시 크게 보여주는 라이트박스 -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="닫기">&times;</button>
     <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-video" id="lightboxVideo">
+      <iframe id="lightboxIframe" src="" title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
