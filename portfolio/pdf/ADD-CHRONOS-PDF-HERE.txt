@@ -1,5 +1,0 @@
-이 폴더에 CHRONOS 브랜딩 PDF 파일을
-"chronos-brandbook.pdf" 라는 이름으로 넣어주세요.
-
-넣은 뒤에는 이 안내 파일(ADD-CHRONOS-PDF-HERE.txt)은
-삭제해도 됩니다.
