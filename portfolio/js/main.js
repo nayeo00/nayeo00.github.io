@@ -23,4 +23,45 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   targets.forEach(function (el) { observer.observe(el); });
+
+  // --- CHRONOS 갤러리 라이트박스 (이미지 클릭 시 크게 보기) ---
+  var galleryImgs = document.querySelectorAll(".gallery img");
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightboxImg");
+  var lightboxCaption = document.getElementById("lightboxCaption");
+  var lightboxClose = document.getElementById("lightboxClose");
+
+  function openLightbox(imgEl) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = imgEl.src;
+    lightboxImg.alt = imgEl.alt || "";
+    var caption = imgEl.parentElement.querySelector("figcaption");
+    if (lightboxCaption) {
+      lightboxCaption.textContent = caption ? caption.textContent : "";
+    }
+    lightbox.classList.add("is-open");
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove("is-open");
+    if (lightboxImg) lightboxImg.src = "";
+  }
+
+  galleryImgs.forEach(function (img) {
+    img.addEventListener("click", function () { openLightbox(img); });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
+  if (lightbox) {
+    // 배경(이미지 바깥) 클릭 시 닫기
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeLightbox();
+  });
 });

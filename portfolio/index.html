@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Content Portfolio — SOYLAB THE CLASS Track A</title>
+<!-- Pretendard 웹폰트 (한글/영문 고딕) — CDN 연결이 안 되면 시스템 고딕체로 자연스럽게 대체됩니다 -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,9 +16,9 @@
   <header class="hero">
     <div class="wrap">
       <div class="hero-eyebrow reveal is-visible">SOYLAB · THE CLASS — TRACK A PORTFOLIO</div>
-      <h1 class="reveal is-visible">AI Content<br><em>Portfolio</em></h1>
+      <h1 class="reveal is-visible">AI Content<br><span class="accent">Portfolio</span></h1>
       <p class="hero-line reveal is-visible">기획과 이야기를 영상으로 구현합니다.</p>
-      <p class="hero-desc reveal is-visible">생성형 AI를 활용해 영상과 브랜딩 콘텐츠를 제작해왔습니다. 앞으로는 광고를 넘어, 인물과 서사가 살아 있는 AI 영상까지 만드는 것을 목표로 합니다.</p>
+      <p class="hero-desc reveal is-visible">생성형 AI로 짧은 포맷 안에서 이야기와 브랜드를 만들어왔습니다. 다음 목표는 인물과 서사가 있는, 더 긴 호흡의 AI 영상입니다.</p>
       <div class="hero-foot reveal is-visible">
         <span class="dot"></span> 4 WORKS <span class="dot"></span> 3 FILMS + 1 BRAND CASE <span class="dot"></span> SCROLL
       </div>
@@ -147,15 +149,18 @@
     </div>
 
     <div class="sprocket sprocket--brass"></div>
-    <div class="gallery reveal">
-      <figure><img src="images/chronos/01-product-bottle.jpg" alt="CHRONOS 향수 보틀"><figcaption>PRODUCT</figcaption></figure>
-      <figure><img src="images/chronos/02-store-exterior.jpg" alt="CHRONOS 매장 외관"><figcaption>STORE</figcaption></figure>
-      <figure><img src="images/chronos/03-store-interior.jpg" alt="CHRONOS 매장 인테리어"><figcaption>INTERIOR</figcaption></figure>
-      <figure><img src="images/chronos/04-package-bags.jpg" alt="CHRONOS 쇼핑백"><figcaption>PACKAGE</figcaption></figure>
-      <figure><img src="images/chronos/05-package-box.jpg" alt="CHRONOS 패키지 박스"><figcaption>PACKAGE</figcaption></figure>
-      <figure><img src="images/chronos/06-campaign-azure-spark.jpg" alt="CHRONOS 광고 AZURE SPARK"><figcaption>CAMPAIGN</figcaption></figure>
-      <figure><img src="images/chronos/07-web-ui.jpg" alt="CHRONOS 웹 UI"><figcaption>WEB</figcaption></figure>
-      <figure><img src="images/chronos/08-model.jpg" alt="CHRONOS 모델 컷"><figcaption>CAMPAIGN</figcaption></figure>
+    <div class="wrap">
+      <!-- 이미지를 클릭하면 크게 볼 수 있습니다 (라이트박스) -->
+      <div class="gallery reveal">
+        <figure><img src="images/chronos/01-product-bottle.jpg" alt="CHRONOS 향수 보틀"><figcaption>PRODUCT</figcaption></figure>
+        <figure><img src="images/chronos/02-store-exterior.jpg" alt="CHRONOS 매장 외관"><figcaption>STORE</figcaption></figure>
+        <figure><img src="images/chronos/03-store-interior.jpg" alt="CHRONOS 매장 인테리어"><figcaption>INTERIOR</figcaption></figure>
+        <figure><img src="images/chronos/04-package-bags.jpg" alt="CHRONOS 쇼핑백"><figcaption>PACKAGE</figcaption></figure>
+        <figure><img src="images/chronos/05-package-box.jpg" alt="CHRONOS 패키지 박스"><figcaption>PACKAGE</figcaption></figure>
+        <figure><img src="images/chronos/06-campaign-azure-spark.jpg" alt="CHRONOS 광고 AZURE SPARK"><figcaption>CAMPAIGN</figcaption></figure>
+        <figure><img src="images/chronos/07-web-ui.jpg" alt="CHRONOS 웹 UI"><figcaption>WEB</figcaption></figure>
+        <figure><img src="images/chronos/08-model.jpg" alt="CHRONOS 모델 컷"><figcaption>CAMPAIGN</figcaption></figure>
+      </div>
     </div>
     <div class="sprocket sprocket--brass"></div>
 
@@ -175,6 +180,13 @@
       <!-- <span><a href="mailto:example@email.com">example@email.com</a></span> -->
     </div>
   </footer>
+
+  <!-- 이미지 클릭 시 크게 보여주는 라이트박스 -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="닫기">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
 
 </div>
 
