@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI스토리랩 — 구돌이</title>
+<meta name="description" content="AI로 이야기와 브랜드를 만드는 구돌이의 작업실, AI스토리랩.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F2E6;
+    --card:#FFFDF8;
+    --ink:#2A241D;
+    --ink-muted:#8C8375;
+    --line:#E7DEC8;
+    --badge-bg:#FBF7EC;
+    --badge-border:#E7DCC0;
+    --hero-bg:#211B15;
+    --hero-blob-1:#C98A4B;
+    --hero-blob-2:#7A4E2A;
+    --gold:#CBA46B;
+    --gold-ink:#2A2016;
+    --icon-gold-bg:#F3E7C9;
+    --icon-gold-ink:#8A6B2E;
+    --icon-green-bg:#DCE8D9;
+    --icon-green-ink:#4C6B49;
+    --serif:'Noto Serif KR', serif;
+    --sans:'Pretendard', -apple-system, sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:640px; margin:0 auto; padding:64px 24px 56px; }
+
+  /* Badge */
+  .badge-row{ display:flex; justify-content:center; margin-bottom:28px; }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:var(--badge-bg);
+    border:1px solid var(--badge-border);
+    color:var(--ink-muted);
+    font-size:12.5px;
+    letter-spacing:.03em;
+    padding:7px 16px;
+    border-radius:999px;
+  }
+  .badge::before{
+    content:'●';
+    color:var(--gold);
+    font-size:8px;
+  }
+
+  /* Hero text */
+  .hero-text{ text-align:center; margin-bottom:36px; }
+  .hero-text h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(28px, 6vw, 38px);
+    line-height:1.4;
+    letter-spacing:-.01em;
+  }
+  .hero-text .sub{
+    margin-top:16px;
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--ink-muted);
+  }
+
+  /* Hero card */
+  .hero-card{
+    position:relative;
+    background:var(--hero-bg);
+    border-radius:22px;
+    overflow:hidden;
+    padding:44px 32px;
+    text-align:center;
+    margin-bottom:48px;
+  }
+  .hero-card .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(30px);
+    opacity:.55;
+  }
+  .hero-card .b1{ width:260px; height:260px; background:var(--hero-blob-1); top:-90px; right:-70px; }
+  .hero-card .b2{ width:220px; height:220px; background:var(--hero-blob-2); bottom:-100px; left:-60px; opacity:.45; }
+  .hero-card-inner{ position:relative; z-index:1; }
+  .hero-tag{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:.06em;
+    color:#D8BE93;
+    margin-bottom:16px;
+  }
+  .hero-card h2{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(22px, 5vw, 28px);
+    color:#FBF6EA;
+    line-height:1.35;
+    margin-bottom:14px;
+  }
+  .hero-card p{
+    font-size:14px;
+    line-height:1.75;
+    color:#C9BFAE;
+    max-width:34ch;
+    margin:0 auto 26px;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--gold-ink);
+    font-weight:700;
+    font-size:14px;
+    padding:12px 24px;
+    border-radius:999px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta:hover{ transform:translateY(-2px); box-shadow:0 10px 20px -8px rgba(203,164,107,.5); }
+
+  /* Divider */
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:var(--ink-muted);
+    font-size:12.5px;
+    letter-spacing:.03em;
+    margin:44px 0 20px;
+  }
+  .divider::before, .divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .divider.small{ justify-content:center; margin:52px 0; }
+  .divider.small::before, .divider.small::after{ max-width:120px; }
+  .divider .diamond{ color:var(--gold); font-size:10px; }
+
+  .section-label{
+    font-size:13px;
+    color:var(--ink-muted);
+    margin-bottom:14px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* List items */
+  .list{ display:flex; flex-direction:column; gap:14px; }
+  .item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 18px;
+    box-shadow:0 1px 2px rgba(42,36,29,.04);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .item:hover{
+    transform:translateY(-2px);
+    border-color:var(--gold);
+    box-shadow:0 14px 28px -16px rgba(42,36,29,.18);
+  }
+  .icon{
+    flex:none;
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:11px;
+    font-size:19px;
+  }
+  .icon-gold{ background:var(--icon-gold-bg); color:var(--icon-gold-ink); }
+  .icon-green{ background:var(--icon-green-bg); color:var(--icon-green-ink); }
+  .item-text{ flex:1; min-width:0; display:flex; flex-direction:column; gap:5px; }
+  .item-eyebrow{
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--ink-muted);
+  }
+  .item-title{
+    font-size:15px;
+    font-weight:700;
+    line-height:1.5;
+    color:var(--ink);
+  }
+  .chev{
+    flex:none;
+    font-size:18px;
+    color:var(--ink-muted);
+    transition:transform .2s ease;
+  }
+  .item:hover .chev{ transform:translateX(3px); color:var(--gold); }
+
+  /* Footer */
+  footer{ text-align:center; }
+  .footer-brand{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  footer a{
+    font-size:12.5px;
+    color:var(--ink-muted);
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  footer a:hover{ color:var(--gold); border-color:var(--gold); }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="badge-row">
+      <span class="badge">AI스토리랩 허브</span>
+    </header>
+
+    <section class="hero-text">
+      <h1>이야기를 만들고<br>브랜드로 엮습니다</h1>
+      <p class="sub">AI로 영상과 콘텐츠를 만드는 1인 스토리텔러의 작업실입니다.</p>
+    </section>
+
+    <section class="hero-card">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="hero-card-inner">
+        <span class="hero-tag">AI스토리랩 · 구돌이</span>
+        <h2>AI로 이야기와 브랜드를 만듭니다</h2>
+        <p>단편 영상부터 브랜딩, 콘텐츠 마케팅까지 — 기획부터 실행까지 혼자 완결하는 작업실입니다.</p>
+        <a class="cta" href="https://ai-storylab.tistory.com" target="_blank" rel="noopener">블로그 보러가기 →</a>
+      </div>
+    </section>
+
+    <div class="divider"><span>작업물</span></div>
+    <p class="section-label">포트폴리오 · 콘텐츠</p>
+
+    <div class="list">
+      <a class="item" href="https://ai-storylab.com/portfolio/index.html">
+        <span class="icon icon-gold">🎬</span>
+        <span class="item-text">
+          <span class="item-eyebrow">PORTFOLIO</span>
+          <span class="item-title">NAYEO_PORTFOLIO — AI 영상·브랜드 크리에이티브</span>
+        </span>
+        <span class="chev">›</span>
+      </a>
+
+      <a class="item" href="https://ai-storylab.com/goodadult/index.html">
+        <span class="icon icon-green">📝</span>
+        <span class="item-text">
+          <span class="item-eyebrow">BLOG CHALLENGE</span>
+          <span class="item-title">좋은 어른 7일치 블로그 과제 — 비영리 콘텐츠 실무</span>
+        </span>
+        <span class="chev">›</span>
+      </a>
+    </div>
+
+    <div class="divider small"><span class="diamond">◆</span></div>
+
+    <footer>
+      <p class="footer-brand">AI스토리랩</p>
+      <a href="https://ai-storylab.tistory.com" target="_blank" rel="noopener">티스토리 블로그 바로가기 ↗</a>
+    </footer>
+
+  </div>
+</body>
+</html>
